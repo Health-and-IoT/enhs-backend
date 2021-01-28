@@ -1,0 +1,546 @@
+2021/01/20 20:10:44 Backend server started!
+2021/01/20 20:12:17 Backend server started!
+2021/01/20 20:12:19 Patient retrieved
+2021/01/20 20:12:43 Backend server started!
+2021/01/20 20:12:48 Patient retrieved Z4PcHEFcq0UaYrrRHSlS
+2021/01/20 20:12:59 Backend server started!
+2021/01/20 20:13:01 Patient retrieved -  Z4PcHEFcq0UaYrrRHSlS
+2021/01/20 20:14:25 Patient retrieved -  Z4PcHEFcq0UaYrrRHSlS
+2021/01/20 20:16:42 Backend server started!
+2021/01/20 20:16:52 Backend server started!
+2021/01/20 20:17:10 Backend server started!
+2021/01/20 20:17:25 Backend server started!
+2021/01/20 20:18:25 Backend server started!
+2021/01/20 20:23:48 Backend server started!
+2021/01/20 20:27:40 Backend server started!
+2021/01/20 20:28:19 Backend server started!
+2021/01/20 20:28:56 Backend server started!
+2021/01/20 20:29:37 Backend server started!
+2021/01/20 20:31:23 Backend server started!
+2021/01/20 20:31:42 Backend server started!
+2021/01/20 20:31:44 Patient retrieved -  Z4PcHEFcq0UaYrrRHSlS
+2021/01/20 20:32:12 Backend server started!
+2021/01/20 20:32:15 Patient retrieved -  Z4PcHEFcq0UaYrrRHSlS
+2021/01/20 20:33:17 Backend server started!
+2021/01/20 20:34:22 Backend server started!
+2021/01/20 20:34:57 Backend server started!
+2021/01/20 20:40:20 Backend server started!
+2021/01/20 20:42:31 Backend server started!
+2021/01/20 20:42:37 
+2021/01/20 20:44:31 Backend server started!
+2021/01/20 20:44:57 Backend server started!
+2021/01/20 20:48:08 Backend server started!
+2021/01/20 20:49:07 Backend server started!
+2021/01/20 20:51:03 Backend server started!
+2021/01/20 20:51:05 {  }
+2021/01/20 20:51:43 Backend server started!
+2021/01/20 20:52:18 Backend server started!
+2021/01/20 20:52:52 {admin SMecCl59g0Q75GIxCgLagQ== 111}
+2021/01/20 20:56:53 Backend server started!
+2021/01/20 20:58:20 Backend server started!
+2021/01/20 21:00:42 Backend server started!
+2021/01/20 21:02:45 Backend server started!
+2021/01/20 21:04:33 Backend server started!
+2021/01/20 21:14:53 Backend server started!
+2021/01/20 21:16:00 Backend server started!
+2021/01/20 21:28:26 Backend server started!
+2021/01/20 21:28:31 Login Attempt Recieved from: admin
+2021/01/20 21:28:47 Login Attempt Recieved from: admin
+2021/01/20 21:28:48 Login Successful from: admin
+2021/01/20 21:29:35 Login Attempt Recieved from: admin
+2021/01/20 21:29:36 Login Successful from: admin
+2021/01/20 21:31:11 Login Attempt Recieved from: admin
+2021/01/20 21:31:11 Login Successful from: admin
+2021/01/20 21:32:57 Backend server started!
+2021/01/20 21:33:02 Login Attempt Recieved from: admin
+2021/01/20 21:33:02 Login Successful from: admin
+2021/01/20 21:33:33 Login Attempt Recieved from: admin
+2021/01/20 21:33:34 Login Successful from: admin
+2021/01/20 21:34:10 Backend server started!
+2021/01/20 21:34:12 Login Attempt Recieved from: admin
+2021/01/20 21:34:12 Login Successful from: admin
+2021/01/20 21:34:58 Backend server started!
+2021/01/20 21:34:59 Login Attempt Recieved from: admin
+2021/01/20 21:35:00 Login Successful from: admin
+2021/01/20 21:35:19 Backend server started!
+2021/01/20 21:35:20 Login Attempt Recieved from: admin
+2021/01/20 21:35:21 Login Successful from: admin
+2021/01/20 21:35:39 Backend server started!
+2021/01/20 21:35:43 Login Attempt Recieved from: admin
+2021/01/20 21:35:44 Login Successful from: admin
+2021/01/20 21:36:19 Login Attempt Recieved from: admin
+2021/01/20 21:36:19 Login Successful from: admin
+2021/01/20 21:37:54 Login Attempt Recieved from: admin
+2021/01/20 21:38:27 Backend server started!
+2021/01/20 21:38:28 Login Attempt Recieved from: admin
+2021/01/20 21:38:30 Login Attempt Recieved from: admin
+2021/01/20 21:38:35 Login Attempt Recieved from: admin
+2021/01/20 21:38:35 Login Successful from: admin
+2021/01/20 21:49:13 Backend server started!
+2021/01/20 21:49:22 Login Attempt Recieved from: admin
+2021/01/20 21:49:22 Login Successful from: admin
+2021/01/20 21:49:35 Login Attempt Recieved from: test
+2021/01/20 21:49:35 Login Successful from: test
+2021/01/21 09:48:31 Backend server started!
+2021/01/21 09:52:23 Login Attempt Recieved from: admin
+2021/01/21 09:52:24 Login Successful from: admin
+2021/01/21 09:54:17 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/21 10:17:01 Login Attempt Recieved from: admin
+2021/01/21 10:17:02 Login Successful from: admin
+2021/01/21 10:18:01 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/21 10:19:33 Patient and Form added to DB :  O5GeXQzAAlYHwEeKudJA
+2021/01/21 10:19:43 Patient retrieved -  j8hif7ACAMrgyw1oDD6p
+2021/01/21 10:20:58 Backend server started!
+2021/01/21 10:21:07 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/21 10:21:21 Login Attempt Recieved from: admin
+2021/01/21 10:21:21 Login Successful from: admin
+2021/01/26 22:47:13 Backend server started!
+2021/01/26 22:53:34 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 22:56:28 Backend server started!
+2021/01/26 23:00:09 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/patient/undefined" not found
+2021/01/26 23:00:16 Backend server started!
+2021/01/26 23:00:19 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/patient/undefined" not found
+2021/01/26 23:00:25 Backend server started!
+2021/01/26 23:03:53 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/patient/undefined" not found
+2021/01/26 23:05:11 Backend server started!
+2021/01/26 23:21:50 Backend server started!
+2021/01/26 23:46:18 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/patient/undefined" not found
+2021/01/26 23:48:38 Backend server started!
+2021/01/26 23:51:29 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/patient/undefined" not found
+2021/01/26 23:51:35 Backend server started!
+2021/01/26 23:52:33 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:54:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:54:55 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:54:58 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:55:01 Patient retrieved -  1Eu8txpdpB9Rj12jyNHL
+2021/01/26 23:55:06 Patient retrieved -  O5GeXQzAAlYHwEeKudJA
+2021/01/26 23:55:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:55:15 Patient retrieved -  1Eu8txpdpB9Rj12jyNHL
+2021/01/26 23:55:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:55:18 Patient retrieved -  O5GeXQzAAlYHwEeKudJA
+2021/01/26 23:55:20 Patient retrieved -  dj0JdkURxxhuhrU6oSrS
+2021/01/26 23:55:24 Patient retrieved -  1Eu8txpdpB9Rj12jyNHL
+2021/01/26 23:55:43 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/26 23:56:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:00:57 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:01:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:02:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:02:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:03:50 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:04:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:08:00 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:08:41 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:08:46 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:09:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:10:26 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:13:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:13:56 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:15:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:15:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:15:32 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:15:40 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:16:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:16:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:16:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:19:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:20:29 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:20:51 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:21:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:21:49 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:22:03 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:22:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:22:51 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:23:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:23:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:23:59 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:23:59 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:24:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:24:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:24:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:25:06 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:25:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:26:50 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:17 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:17 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:17 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:17 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:17 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:18 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:18 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:18 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:18 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:18 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:19 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:19 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:19 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:19 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:20 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:20 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:20 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:20 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:20 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:20 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:21 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:21 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:21 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:22 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:22 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:22 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:22 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:22 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:23 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:24 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:25 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:25 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:25 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:25 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:25 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:26 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:26 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:26 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:26 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:26 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:27 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:27 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:27 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:27 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:27 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:28 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:28 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:28 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:28 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:28 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:29 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:29 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:29 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:28:29 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:05 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:05 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:05 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:05 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:06 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:06 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:06 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:06 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:07 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:07 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:07 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:07 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:08 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:09 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:09 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:09 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:09 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:09 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:09 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:11 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:12 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:13 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:14 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:16 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:36 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:37 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:38 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:38 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:38 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:38 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:39 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:39 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:39 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:39 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:40 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:40 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:40 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:41 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:41 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:41 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:42 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:43 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:43 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:44 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:29:45 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:30:10 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:34:04 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 00:34:18 Patient retrieved -  1Eu8txpdpB9Rj12jyNHL
+2021/01/27 00:41:19 Login Attempt Recieved from: admin
+2021/01/27 00:41:20 Login Successful from: admin
+2021/01/27 00:46:44 Backend server started!
+2021/01/27 00:46:44 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/users/[object Promise]" not found
+2021/01/27 00:49:52 Backend server started!
+2021/01/27 00:50:05 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/users/[object Promise]" not found
+2021/01/27 00:58:43 Backend server started!
+2021/01/27 00:58:49 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 00:59:21 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:00:04 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/users/x" not found
+2021/01/27 01:00:09 Backend server started!
+2021/01/27 01:00:13 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/users/val" not found
+2021/01/27 01:00:21 Backend server started!
+2021/01/27 01:00:22 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:01:10 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:01:44 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:01:52 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:02:05 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:04:05 Backend server started!
+2021/01/27 01:04:11 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:04:57 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:05:03 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:05:35 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:05:49 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:06:03 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 01:06:14 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 11:05:07 Backend server started!
+2021/01/27 11:08:07 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 11:09:42 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/users/null" not found
+2021/01/27 11:09:55 Backend server started!
+2021/01/27 11:09:55 Login Attempt Recieved from: admin
+2021/01/27 11:09:56 Login Successful from: admin
+2021/01/27 11:10:00 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 11:10:03 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/users/null" not found
+2021/01/27 11:12:26 Backend server started!
+2021/01/27 11:12:26 Login Attempt Recieved from: test
+2021/01/27 11:12:26 Login Attempt Recieved from: test
+2021/01/27 11:12:27 Login Successful from: test
+2021/01/27 11:12:31 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:12:39 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:12:43 Login Attempt Recieved from: test
+2021/01/27 11:12:44 Login Successful from: test
+2021/01/27 11:12:45 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:12:48 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:17:21 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:18:06 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:18:29 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:19:04 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:19:34 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:21:03 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:35:03 Backend server started!
+2021/01/27 11:35:14 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:35:38 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:35:59 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:36:15 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:36:39 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:36:52 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:37:08 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:37:45 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:38:32 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:38:34 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:38:55 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:39:41 Backend server started!
+2021/01/27 11:39:44 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:40:42 Backend server started!
+2021/01/27 11:40:45 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:40:48 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:40:58 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:42:32 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:43:07 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:43:09 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:43:21 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:43:22 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/undefined
+2021/01/27 11:45:34 Backend server started!
+2021/01/27 11:45:38 An error has occurred: rpc error: code = InvalidArgument desc = Document name "projects/enhs-43c13/databases/(default)/documents/form/" has invalid trailing "/".
+2021/01/27 11:46:12 Backend server started!
+2021/01/27 11:46:29 An error has occurred: rpc error: code = InvalidArgument desc = Document name "projects/enhs-43c13/databases/(default)/documents/form/" has invalid trailing "/".
+2021/01/27 11:46:48 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 11:51:04 Backend server started!
+2021/01/27 11:51:23 Patient and Form added to DB :  Mz4po8TCx9hb6GtQEdOU
+2021/01/27 11:51:25 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:51:58 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/x
+2021/01/27 11:52:57 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:53:10 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:53:19 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:53:37 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:53:47 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/x
+2021/01/27 11:54:04 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/x
+2021/01/27 11:54:24 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:54:27 An error has occurred: rpc error: code = NotFound desc = No document to update: projects/enhs-43c13/databases/(default)/documents/form/x
+2021/01/27 11:54:46 Backend server started!
+2021/01/27 11:54:49 An error has occurred: rpc error: code = InvalidArgument desc = Document name "projects/enhs-43c13/databases/(default)/documents/form/" has invalid trailing "/".
+2021/01/27 11:55:07 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:55:26 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:55:44 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:56:11 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 11:56:56 Backend server started!
+2021/01/27 11:58:15 Patient retrieved -  msM3mUkmGBkzSLoOxVZF
+2021/01/27 11:58:17 Patient retrieved -  1Eu8txpdpB9Rj12jyNHL
+2021/01/27 11:58:45 Backend server started!
+2021/01/27 12:00:05 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:00:26 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:00:32 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:00:49 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:00:56 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:01:01 Login Attempt Recieved from: admin
+2021/01/27 12:01:01 Login Successful from: admin
+2021/01/27 12:01:04 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:01:10 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:01:18 Login Attempt Recieved from: admin
+2021/01/27 12:01:18 Login Successful from: admin
+2021/01/27 12:01:20 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 12:01:47 Backend server started!
+2021/01/27 12:01:55 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 12:02:00 Login Attempt Recieved from: admin
+2021/01/27 12:02:00 Login Successful from: admin
+2021/01/27 12:02:03 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 12:02:55 User retrieved -  yZzjmEWtfu9La5cOVZWB
+2021/01/27 12:03:01 Login Attempt Recieved from: test
+2021/01/27 12:03:01 Login Successful from: test
+2021/01/27 12:03:04 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:07:44 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:08:06 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:08:26 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:08:52 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:09:13 Backend server started!
+2021/01/27 12:10:07 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:10:10 rpc error: code = NotFound desc = "projects/enhs-43c13/databases/(default)/documents/sites/111" not found
+2021/01/27 12:10:18 Backend server started!
+2021/01/27 12:13:30 Backend server started!
+2021/01/27 12:14:38 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:15:09 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:15:28 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:34:08 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:34:24 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:36:15 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:37:23 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:38:07 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:38:32 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:38:47 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:42:50 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:43:34 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:43:54 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:44:21 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:44:37 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:44:47 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/27 12:45:09 User retrieved -  MkHkIyP1EvIIIXzGfG27
+2021/01/28 12:20:22 Backend server started!
