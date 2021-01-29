@@ -1,1 +1,12 @@
+# ENHS Backend .gitignore
+################
+
+
+# Specific Files
 sk.json
+
+# Log Files
+*.log
+*/*.log
+
+
