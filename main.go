@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"os"
 	"reflect"
-	"time"
 
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
@@ -20,6 +19,7 @@ import (
 	"google.golang.org/api/option"
 )
 
+//Form Struct - for v1 - not used currently.
 type Form struct {
 	Address       string `json:"address"`
 	Name          string `json:"name"`
@@ -35,6 +35,7 @@ type Form struct {
 	Seen          bool   `json:"seen"`
 }
 
+//Patient struct - used to get patient JSON strings when sent to server. Converts to GO strings.
 type Patient struct {
 	Address   string `json:"address"`
 	Allergies string `json:"allergies"`
@@ -44,25 +45,34 @@ type Patient struct {
 	Name      string `json:"name"`
 	Nok       string `json:"nok"`
 }
+
+//Request struct - used to split patient and form when sent to server.
 type Request struct {
 	Patient Patient
 	Form    Form1
 }
 
+// Login struct - used when recieving a login request from app.
 type Login struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Siteid   string `json:"siteid"`
 }
+
+//Site struct - used to get site JSON strings when sent to server. Converts to GO Strings.
 type Site struct {
 	Name    string `json:"name"`
 	Address string `json:"address"`
 	Siteid  string `json:"siteid"`
 }
+
+//LoggedInUser struct - used to get non senstive JSON strings from firebase.
 type LoggedInUser struct {
 	Username string `json:"username"`
 	Rank     string `json:"rank"`
 }
+
+//Form1 struct - used to get form JSON strings when sent to server. Converts to GO strings.
 type Form1 struct {
 	Ailment       string `json:"ailment"`
 	DateSubmitted string `json:"dateSubmitted"`
@@ -74,6 +84,7 @@ type Form1 struct {
 	DocID         string `json:"docID"`
 }
 
+//Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
 func update(v interface{}, updates map[string]string) {
 	rv := reflect.ValueOf(v).Elem()
 	for key, val := range updates {
@@ -82,14 +93,19 @@ func update(v interface{}, updates map[string]string) {
 	}
 }
 
-func updateVisit1(w http.ResponseWriter, r *http.Request) {
+//Func updateForm - used to update form when requested from web app.
+func updateForm(w http.ResponseWriter, r *http.Request) {
+	//Set headers for response
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get vars from request.
 	params := mux.Vars(r)
 
+	//Alert - id recieved.
 	color.Yellow("ID Recieved ✔️")
 	color.Yellow(params["id"])
+	//Firebase setup
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -103,11 +119,12 @@ func updateVisit1(w http.ResponseWriter, r *http.Request) {
 	}
 	defer client.Close()
 
+	//Get post method.
 	switch r.Method {
 	case "GET":
 
 	case "POST":
-
+		//Read request
 		body, err := ioutil.ReadAll(r.Body)
 
 		if err != nil {
@@ -116,11 +133,11 @@ func updateVisit1(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//fmt.Println(string(body))
-
+		//Convert to Form1
 		var p Form1
 
 		json.Unmarshal([]byte(body), &p)
-
+		//Firebase update.
 		_, err = client.Collection("form").Doc(p.DocID).Update(ctx, []firestore.Update{
 			{
 				Path:  "Approved",
@@ -148,8 +165,9 @@ func updateVisit1(w http.ResponseWriter, r *http.Request) {
 			log.Printf("An error has occurred: %s", err)
 		}
 
+		//Alert
 		color.Green("Form Updated - " + p.DocID)
-
+		//Send response.
 		w.Write([]byte(`{"success":true}`))
 
 	default:
@@ -157,14 +175,57 @@ func updateVisit1(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-func getVisits(w http.ResponseWriter, r *http.Request) {
+
+//Func deleteForm - deletes form when requested.
+func deleteForm(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
+	params := mux.Vars(r)
+	//Alert - delete request recieved.
+	color.Yellow("Delete Request Recieved ✔️")
+
+	//Firebase setup.
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("sk.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	//Delete doc from firebase based on ID recieved in request.
+	_, err2 := client.Collection("form").Doc(params["id"]).Delete(ctx)
+	if err2 != nil {
+		// Handle any errors in an appropriate way, such as returning them.
+		log.Printf("An error has occurred: %s", err)
+	}
+	//Alert - deleted
+	color.Red("Deleted document - ")
+	color.Red(params["id"])
+	//Send response.
+	w.Write([]byte(`{"success":true}`))
+
+}
+
+//Func getVisits - get visits when requested
+func getVisits(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
+	w.Header().Set("Content-Type", "application/json")
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
 	params := mux.Vars(r)
 
+	//Alert - id recieved
 	color.Yellow("ID Recieved ✔️")
 	color.Yellow(params["id"])
+	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -177,6 +238,7 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 	defer client.Close()
+	//Iterate through form from firebase where patient id matches.
 	iter := client.Collection("form").Where("Patient", "==", params["id"]).Documents(ctx)
 	var f []Form1
 	for {
@@ -188,10 +250,12 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 
 			log.Fatalf("Failed to iterate: %v", err)
 		}
+		//Convert to Form1
 		var nyData Form1
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
+		//Conversion
 		jsonString, _ := json.Marshal(doc.Data())
 
 		s := Form1{}
@@ -202,20 +266,28 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 
 		// //fmt.Println(doc.Data())
 		// //fmt.Println(nyData)
+		//Append to array for visits
 		f = append(f, s)
 
 	}
+	//Send visits as an array in JSON format.
 	json.NewEncoder(w).Encode(f)
 
 }
+
+//GetPatient - gets patient by id.
 func getPatient(w http.ResponseWriter, r *http.Request) {
+	//Set response header
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
 	params := mux.Vars(r)
 
+	//Alert - id recieved.
 	color.Yellow("ID Recieved ✔️")
 	color.Yellow(params["id"])
+	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -229,27 +301,35 @@ func getPatient(w http.ResponseWriter, r *http.Request) {
 	}
 	defer client.Close()
 
+	//Get patient based on id.
 	dsnap, err2 := client.Collection("patient").Doc(params["id"]).Get(ctx)
 	if err2 != nil {
 		log.Fatal(err2)
 	}
 
+	//convert to patient struct
 	var c Patient
 	dsnap.DataTo(&c)
 
+	//Log and send response
 	fmt.Printf("Document data: %#v\n", c)
 	log.Println("Patient retrieved - ", params["id"])
 	json.NewEncoder(w).Encode(c)
 }
 
+//Get Site - gets site based on ID.
 func getSite(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
 	params := mux.Vars(r)
 
+	//Alert - id recieved
 	color.Yellow("ID Recieved ✔️")
 	color.Yellow(params["id"])
+	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -263,7 +343,9 @@ func getSite(w http.ResponseWriter, r *http.Request) {
 	}
 	defer client.Close()
 
+	//Iterate through firebase collection of sites until id matches.
 	iter := client.Collection("sites").Where("siteid", "==", params["id"]).Documents(ctx)
+	//Convert to site struct
 	var nyData Site
 	for {
 		doc, err := iter.Next()
@@ -278,6 +360,7 @@ func getSite(w http.ResponseWriter, r *http.Request) {
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
+		//Conversion
 		jsonString, _ := json.Marshal(doc.Data())
 
 		//convert to Form struct
@@ -289,19 +372,26 @@ func getSite(w http.ResponseWriter, r *http.Request) {
 		// //fmt.Println(nyData)
 
 	}
+	//Log and respond
 	fmt.Printf("Document data: %#v\n", nyData)
 	json.NewEncoder(w).Encode(nyData)
 
 }
 
+//Func getUser - gets user account based on id.
+
 func getUser(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
 	params := mux.Vars(r)
 
+	//Alert - id recieved.
 	color.Yellow("ID Recieved ✔️")
 	color.Yellow(params["id"])
+	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -315,27 +405,35 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	}
 	defer client.Close()
 
+	//Find user based on id
 	dsnap, err2 := client.Collection("users").Doc(params["id"]).Get(ctx)
 	if err2 != nil {
 		log.Fatal(err2)
 	}
 
+	//Make into logged user
 	var c LoggedInUser
 	dsnap.DataTo(&c)
 
+	//Record and respond
 	fmt.Printf("Document data: %#v\n", c)
 	log.Println("User retrieved - ", params["id"])
 	json.NewEncoder(w).Encode(c)
 }
 
+//Func getPatients - get all forms for patients
 func getPatients(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
 	params := mux.Vars(r)
 
+	//Alert - id recieved
 	color.Yellow("ID Recieved ✔️")
 	color.Yellow(params["id"])
+	//Setup Firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -349,6 +447,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	}
 	defer client.Close()
 
+	//Iterate through forms.
 	iter := client.Collection("form").Documents(ctx)
 	var f []Form1
 	for {
@@ -360,6 +459,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 
 			log.Fatalf("Failed to iterate: %v", err)
 		}
+		//Convert to form
 		var nyData Form1
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
@@ -374,50 +474,22 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 
 		// //fmt.Println(doc.Data())
 		// //fmt.Println(nyData)
+		//Append to form array
 		f = append(f, s)
 
 	}
+	//Respond
 	json.NewEncoder(w).Encode(f)
+
 }
 
-func updateVisit(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	params := mux.Vars(r)
-
-	color.Yellow("ID Recieved ✔️")
-	color.Yellow(params["id"])
-	ctx := context.Background()
-	sa := option.WithCredentialsFile("sk.json")
-	app, err := firebase.NewApp(ctx, nil, sa)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	client, err := app.Firestore(ctx)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer client.Close()
-
-	dsnap, err2 := client.Collection("visits").Doc(params["id"]).Get(ctx)
-	if err2 != nil {
-		log.Fatal(err2)
-	}
-
-	var c Patient
-	dsnap.DataTo(&c)
-
-	fmt.Printf("Document data: %#v\n", c)
-	log.Println("Patient retrieved - ", params["id"])
-	json.NewEncoder(w).Encode(c)
-}
-
+//Func authLogin - used to authorise user and log them into application.
 func authLogin(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
 	app, err := firebase.NewApp(ctx, nil, sa)
@@ -434,6 +506,7 @@ func authLogin(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 
 	case "POST":
+		//Read request
 
 		body, err := ioutil.ReadAll(r.Body)
 
@@ -444,12 +517,13 @@ func authLogin(w http.ResponseWriter, r *http.Request) {
 
 		//fmt.Println(string(body))
 
+		//Setup login var
 		var p Login
-
+		//Convert to struct
 		json.Unmarshal([]byte(body), &p)
 		color.Yellow("Login Attempt Recieved from: " + p.Username)
 		log.Println("Login Attempt Recieved from: " + p.Username)
-
+		//Iterate through collection to see if details match
 		iter := client.Collection("users").Where("username", "==", p.Username).Where("password", "==", p.Password).Where("siteid", "==", p.Siteid).Documents(ctx)
 
 		for {
@@ -460,7 +534,7 @@ func authLogin(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 
-			doc.Data()
+			//Match - respond and log
 			color.Green("Login Successful from: " + p.Username)
 			log.Println("Login Successful from: " + p.Username)
 			w.Write([]byte(`{"success":true, "id":"` + doc.Ref.ID + `"}`))
@@ -472,6 +546,8 @@ func authLogin(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+
+//Work in progress for real-time updates.
 func checkForNewForm() {
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
@@ -486,39 +562,72 @@ func checkForNewForm() {
 	}
 	defer client.Close()
 
-	currentTime := time.Now().Add(-10 * time.Minute)
-	snapIter := client.Collection("form").OrderBy("DateSubmitted", firestore.Asc).Snapshots(ctx)
+	// currentTime := time.Now().Add(-10 * time.Minute)
+	// snapIter := client.Collection("form").OrderBy("DateSubmitted", firestore.Asc).Snapshots(ctx)
 
-	defer snapIter.Stop()
+	// defer snapIter.Stop()
 
-	for {
-		snap, err := snapIter.Next()
-		if err != nil {
-			color.Yellow("", err)
-		}
+	// for {
+	// 	snap, err := snapIter.Next()
+	// 	if err != nil {
+	// 		color.Yellow("", err)
+	// 	}
 
-		for _, diff := range snap.Changes {
+	// 	for _, diff := range snap.Changes {
 
-			jsonString, _ := json.Marshal(diff.Doc.Data())
+	// 		jsonString, _ := json.Marshal(diff.Doc.Data())
 
-			s := Form{}
-			//convert to Form struct
-			json.Unmarshal(jsonString, &s)
+	// 		s := Form{}
+	// 		//convert to Form struct
+	// 		json.Unmarshal(jsonString, &s)
 
-			if s.DateSubmitted > currentTime.Format("02/01/2006, 15:04:05") {
+	// 		if s.DateSubmitted > currentTime.Format("02/01/2006, 15:04:05") {
 
-				color.Cyan("New Form Received 🔔")
-				color.Cyan("Date and time submitted: %v", s.DateSubmitted)
-			} else {
+	// 			color.Cyan("New Form Received 🔔")
+	// 			color.Cyan("Date and time submitted: %v", s.DateSubmitted)
+	// 		} else {
+
+	// 		}
+
+	// 	}
+
+	// }
+	cols, err := client.Collections(context.Background()).GetAll()
+
+	for _, col := range cols {
+		iter := col.Snapshots(context.Background())
+		defer iter.Stop()
+
+		for {
+			doc, err := iter.Next()
+			if err != nil {
+				if err == iterator.Done {
+					break
+				}
 
 			}
 
+			for _, change := range doc.Changes {
+				// access the change.Doc returns the Document,
+				// which contains Data() and DataTo(&p) methods.
+				switch change.Kind {
+				case firestore.DocumentAdded:
+					// on added it returns the existing ones.
+					//isNew := change.Doc.CreateTime.After(l.startTime)
+					// [...]
+				case firestore.DocumentModified:
+					// [...]
+				case firestore.DocumentRemoved:
+					// [...]
+				}
+			}
 		}
-
 	}
 }
 
+//func Main - this is where it all starts
 func main() {
+	//Inital setup
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
 	f, err := os.OpenFile("logfile", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
@@ -543,6 +652,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	defer client.Close()
+
 	//color.Green("Retrieving Firebase collection...⏳")
 	//log.Println("Retrieving Firebase collection...")
 	//iter := client.Collection("forms").Documents(ctx)
@@ -575,13 +685,14 @@ func main() {
 	// }
 	//color.Green("Forms initialised ✔️")
 
+	//Routers - the api aspect of the application.
 	r := mux.NewRouter()
 	r.HandleFunc("/getPatient/{id}", getPatient).Methods("POST")
 	r.HandleFunc("/getVisits/{id}", getVisits).Methods("POST")
 	r.HandleFunc("/getUser/{id}", getUser).Methods("POST")
 	r.HandleFunc("/getPatients", getPatients).Methods("POST")
-	r.HandleFunc("/updateVisit/{id}", updateVisit).Methods("POST")
-	r.HandleFunc("/updateV/{id}", updateVisit1).Methods("POST")
+	r.HandleFunc("/updateForm/{id}", updateForm).Methods("POST")
+	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
 
@@ -642,12 +753,8 @@ func main() {
 		}
 	})
 
-	// cors.Default() setup the middleware with default options being
-	// all origins accepted with simple methods (GET, POST). See
-	// documentation below for more options.
-
+	//Starts and opens port allowing connections on runtime.
 	handler := cors.Default().Handler(r)
 	http.ListenAndServe(":8080", handler)
-	checkForNewForm()
 
 }
