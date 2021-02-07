@@ -719,6 +719,7 @@ func main() {
 
 			var p Request
 
+			//NOTE & denotes value passed by reference ie value is changed by function.
 			json.Unmarshal([]byte(body), &p)
 			pat := p.Patient
 			form := p.Form
@@ -754,6 +755,7 @@ func main() {
 	})
 
 	//Starts and opens port allowing connections on runtime.
+	//NOTE JB - I think that this port should be 443
 	handler := cors.Default().Handler(r)
 	http.ListenAndServe(":8080", handler)
 
