@@ -758,7 +758,7 @@ func main() {
 	//NOTE JB - I think that this port should be 443
 	handler := cors.Default().Handler(r)
 
-	if err := http.ListenAndServe(":8080", handler); err != nil {
+	if err := http.ListenAndServe(":80", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 
