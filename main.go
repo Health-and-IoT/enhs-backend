@@ -757,6 +757,6 @@ func main() {
 	//Starts and opens port allowing connections on runtime.
 	//NOTE JB - I think that this port should be 443
 	handler := cors.Default().Handler(r)
-	http.ListenAndServe(":8080", handler)
+	http.ListenAndServe(":443", handler)
 
 }
