@@ -186,13 +186,15 @@ func test(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
+		color.Yellow("Test recieved ✔️")
 		w.Write([]byte(`{"success":true}`))
 	case "POST":
 		//Read request
-
+		color.Green("Test recieved ✔️")
 		w.Write([]byte(`{"success":true}`))
 
 	default:
+		color.Red("Test recieved ✔️")
 		w.Write([]byte(`{"success":true}`))
 	}
 
