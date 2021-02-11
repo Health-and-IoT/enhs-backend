@@ -717,7 +717,7 @@ func main() {
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
-	r.HandleFunc("/test", test).Methods("POST")
+	r.HandleFunc("/test", test).Methods("GET")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
 		if r.URL.Path != "/" {
