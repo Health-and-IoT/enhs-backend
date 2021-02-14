@@ -177,6 +177,30 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 }
 
 //Func deleteForm - deletes form when requested.
+func test(w http.ResponseWriter, r *http.Request) {
+	//Set headers for response
+	w.Header().Set("Content-Type", "application/json")
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get vars from request.
+
+	switch r.Method {
+	case "GET":
+		color.Yellow("Test recieved ✔️")
+		w.Write([]byte(`{"success":true}`))
+	case "POST":
+		//Read request
+		color.Green("Test recieved ✔️")
+		w.Write([]byte(`{"success":true}`))
+
+	default:
+		color.Red("Test recieved ✔️")
+		w.Write([]byte(`{"success":true}`))
+	}
+
+}
+
+//Func deleteForm - deletes form when requested.
 func deleteForm(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
@@ -695,7 +719,7 @@ func main() {
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
-
+	r.HandleFunc("/test", test).Methods("GET")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
 		if r.URL.Path != "/" {
@@ -758,7 +782,7 @@ func main() {
 	//NOTE JB - I think that this port should be 443
 	handler := cors.Default().Handler(r)
 
-	if err := http.ListenAndServe("localhost:8080", handler); err != nil {
+	if err := http.ListenAndServe(":8080", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 

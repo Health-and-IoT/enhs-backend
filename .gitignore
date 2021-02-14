@@ -6,7 +6,6 @@
 sk.json
 
 # Log Files
-*.log
-*/*.log
 logfile
+logfile.*
 
