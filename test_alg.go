@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 )
 
 //prints list of prognosises
@@ -22,7 +23,7 @@ func listProgs(recs [][]string) {
 func listSimps(recs [][]string, symptom string) []string {
 	x := len(recs[1]) - 1
 	progs := make([]string, 0)
-	fmt.Printf(symptom)
+	//fmt.Printf(symptom)
 	row := 0
 	//TODO SORT THIS SO IT DOESNT RELATE TO ITCHING / ACTUAL VALUE
 	sympIndex := 0
@@ -39,7 +40,7 @@ func listSimps(recs [][]string, symptom string) []string {
 			progs = append(progs, recs[row][x])
 		}
 	}
-	fmt.Println(progs)
+	//fmt.Println(progs)
 	return progs
 }
 
@@ -53,7 +54,17 @@ func listSimpsMult(recs [][]string, symptoms []string) {
 	for _, index := range progSet {
 		finProgs[index] = finProgs[index] + 1
 	}
-	fmt.Println(finProgs)
+	//fmt.Println(finProgs)
+	keys := make([]string, 0, len(finProgs))
+	for k := range finProgs {
+		keys = append(keys, k)
+	}
+	sort.Slice(keys, func(i, j int) bool {
+		return finProgs[keys[i]] > finProgs[keys[j]]
+	})
+	for _, key := range keys {
+		fmt.Printf("%-7v %v\n", key, finProgs[key])
+	}
 }
 
 func main() {
@@ -67,5 +78,5 @@ func main() {
 		log.Fatalln(err)
 	}
 	//listProgs(records)
-	listSimpsMult(records, []string{"itching", "skin_rash"})
+	listSimpsMult(records, []string{"itching", "skin_rash", "polyuria", "unsteadiness", "loss_of_balance", "movement_stiffness"})
 }
