@@ -18,6 +18,14 @@ func listProgs(recs [][]string) {
 	fmt.Println()
 }
 
+func listAllSimps(recs [][]string) {
+	for col := range recs[0] {
+		//records[row][column]
+		fmt.Printf(recs[0][col] + ", ")
+	}
+	fmt.Println()
+}
+
 //lists prognosises for a select symptom
 //TODO if value unchanged provide error
 func listSimps(recs [][]string, symptom string) []string {
@@ -26,7 +34,7 @@ func listSimps(recs [][]string, symptom string) []string {
 	//fmt.Printf(symptom)
 	row := 0
 	//TODO SORT THIS SO IT DOESNT RELATE TO ITCHING / ACTUAL VALUE
-	sympIndex := 0
+	sympIndex := -1
 	for row < x {
 		if symptom == recs[0][row] {
 			sympIndex = row
@@ -34,6 +42,9 @@ func listSimps(recs [][]string, symptom string) []string {
 			break
 		}
 		row++
+	}
+	if sympIndex == -1 {
+		return progs
 	}
 	for row := range recs {
 		if recs[row][sympIndex] == "1" {
@@ -78,5 +89,6 @@ func main() {
 		log.Fatalln(err)
 	}
 	//listProgs(records)
-	listSimpsMult(records, []string{"itching", "skin_rash", "polyuria", "unsteadiness", "loss_of_balance", "movement_stiffness"})
+	//listAllSimps(records)
+	listSimpsMult(records, []string{"itching"})
 }
