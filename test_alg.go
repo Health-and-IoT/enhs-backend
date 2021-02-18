@@ -8,32 +8,37 @@ import (
 	"sort"
 )
 
-//prints list of prognosises
-func listProgs(recs [][]string) {
+// Prints list of prognosises
+func listProgs(recs [][]string) []string {
+	allProgs := make([]string, 0)
 	x := len(recs[1]) - 1
 	for row := range recs {
 		//records[row][column]
-		fmt.Printf(recs[row][x] + ", ")
+		//fmt.Printf(recs[row][x] + ", ")
+		allProgs = append(allProgs, recs[row][x])
 	}
-	fmt.Println()
+	//fmt.Println()
+	return allProgs
 }
 
-func listAllSimps(recs [][]string) {
+// Returns a list of all Symptoms
+func listAllSimps(recs [][]string) []string {
+	allSimps := make([]string, 0)
 	for col := range recs[0] {
 		//records[row][column]
-		fmt.Printf(recs[0][col] + ", ")
+		//fmt.Printf(recs[0][col] + ", ")
+		allSimps = append(allSimps, recs[0][col])
 	}
-	fmt.Println()
+	//fmt.Println()
+	return allSimps
 }
 
 //lists prognosises for a select symptom
-//TODO if value unchanged provide error
 func listSimps(recs [][]string, symptom string) []string {
 	x := len(recs[1]) - 1
 	progs := make([]string, 0)
 	//fmt.Printf(symptom)
 	row := 0
-	//TODO SORT THIS SO IT DOESNT RELATE TO ITCHING / ACTUAL VALUE
 	sympIndex := -1
 	for row < x {
 		if symptom == recs[0][row] {
@@ -55,7 +60,8 @@ func listSimps(recs [][]string, symptom string) []string {
 	return progs
 }
 
-func listSimpsMult(recs [][]string, symptoms []string) {
+// Returns a sorted map of prognoses
+func listSimpsMult(recs [][]string, symptoms []string) map[string]int {
 	progSet := make([]string, 0)
 	finProgs := make(map[string]int)
 	for _, symptom := range symptoms {
@@ -76,6 +82,7 @@ func listSimpsMult(recs [][]string, symptoms []string) {
 	for _, key := range keys {
 		fmt.Printf("%-7v %v\n", key, finProgs[key])
 	}
+	return finProgs
 }
 
 func main() {
@@ -88,7 +95,8 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	//listProgs(records)
-	//listAllSimps(records)
-	listSimpsMult(records, []string{"itching"})
+	str := listProgs(records)
+	//str := listAllSimps(records)
+	//str := listSimpsMult(records, []string{"itching", "skin_rash"})
+	fmt.Println(str)
 }
