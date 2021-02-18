@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -9,6 +10,8 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+
+	"enhstools"
 
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
@@ -676,6 +679,20 @@ func main() {
 		log.Fatalln(err)
 	}
 	defer client.Close()
+
+	//JAKE BLOCK ADDED 18/02/21
+	csvfile, err := os.Open("data/testing.csv")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	reader := csv.NewReader(csvfile)
+	records, err := reader.ReadAll()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer csvfile.Close()
+	str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash"})
+	fmt.Print(str)
 
 	//color.Green("Retrieving Firebase collection...⏳")
 	//log.Println("Retrieving Firebase collection...")

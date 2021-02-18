@@ -1,15 +1,12 @@
-package main
+package enhstools
 
 import (
-	"encoding/csv"
 	"fmt"
-	"log"
-	"os"
 	"sort"
 )
 
-// Prints list of prognosises
-func listProgs(recs [][]string) []string {
+// ListProgs Prints list of prognosises
+func ListProgs(recs [][]string) []string {
 	allProgs := make([]string, 0)
 	x := len(recs[1]) - 1
 	for row := range recs {
@@ -21,8 +18,8 @@ func listProgs(recs [][]string) []string {
 	return allProgs
 }
 
-// Returns a list of all Symptoms
-func listAllSimps(recs [][]string) []string {
+// ListAllSimps Returns a list of all Symptoms
+func ListAllSimps(recs [][]string) []string {
 	allSimps := make([]string, 0)
 	for col := range recs[0] {
 		//records[row][column]
@@ -33,8 +30,8 @@ func listAllSimps(recs [][]string) []string {
 	return allSimps
 }
 
-//lists prognosises for a select symptom
-func listSimps(recs [][]string, symptom string) []string {
+//ListSimps Returns prognosises for a select symptom
+func ListSimps(recs [][]string, symptom string) []string {
 	x := len(recs[1]) - 1
 	progs := make([]string, 0)
 	//fmt.Printf(symptom)
@@ -60,12 +57,12 @@ func listSimps(recs [][]string, symptom string) []string {
 	return progs
 }
 
-// Returns a sorted map of prognoses
-func listSimpsMult(recs [][]string, symptoms []string) map[string]int {
+// ListSimpsMult Returns a sorted map of prognoses
+func ListSimpsMult(recs [][]string, symptoms []string) map[string]int {
 	progSet := make([]string, 0)
 	finProgs := make(map[string]int)
 	for _, symptom := range symptoms {
-		tempProgs := listSimps(recs, symptom)
+		tempProgs := ListSimps(recs, symptom)
 		progSet = append(progSet, tempProgs...)
 	}
 	for _, index := range progSet {
@@ -85,18 +82,19 @@ func listSimpsMult(recs [][]string, symptoms []string) map[string]int {
 	return finProgs
 }
 
-func main() {
-	csvfile, err := os.Open("data/testing.csv")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	r := csv.NewReader(csvfile)
-	records, err := r.ReadAll()
-	if err != nil {
-		log.Fatalln(err)
-	}
-	str := listProgs(records)
-	//str := listAllSimps(records)
-	//str := listSimpsMult(records, []string{"itching", "skin_rash"})
-	fmt.Println(str)
-}
+//func main() {
+//	csvfile, err := os.Open("data/testing.csv")
+//	if err != nil {
+//		log.Fatalln(err)
+//	}
+//	r := csv.NewReader(csvfile)
+//	records, err := r.ReadAll()
+//	if err != nil {
+//		log.Fatalln(err)
+//	}
+//	defer csvfile.Close()
+//	str := listProgs(records)
+//	//str := listAllSimps(records)
+//	//str := listSimpsMult(records, []string{"itching", "skin_rash"})
+//	fmt.Println(str)
+//}
