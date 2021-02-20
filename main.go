@@ -87,6 +87,8 @@ type Form1 struct {
 	DocID         string `json:"docID"`
 }
 
+var records [][]string
+
 //Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
 func update(v interface{}, updates map[string]string) {
 	rv := reflect.ValueOf(v).Elem()
@@ -177,6 +179,15 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 
 	}
 
+}
+
+//func retSymptoms JB Returns a JSON array of symptoms
+func retSymptoms(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	simps := enhstools.ListAllSimps(records)
+	simpsJSON, _ := json.Marshal(simps)
+	w.Write([]byte(simpsJSON))
 }
 
 //Func deleteForm - deletes form when requested.
@@ -686,13 +697,14 @@ func main() {
 		log.Fatalln(err)
 	}
 	reader := csv.NewReader(csvfile)
-	records, err := reader.ReadAll()
+	records, err = reader.ReadAll()
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer csvfile.Close()
-	str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash"})
-	fmt.Print(str)
+	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
+	//str := enhstools.ListAllSimps(records)
+	//fmt.Print(str)
 
 	//color.Green("Retrieving Firebase collection...⏳")
 	//log.Println("Retrieving Firebase collection...")
@@ -736,6 +748,7 @@ func main() {
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
+	r.HandleFunc("/symptoms", retSymptoms).Methods("GET")
 	r.HandleFunc("/test", test).Methods("GET")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
