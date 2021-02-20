@@ -1,8 +1,14 @@
 package enhstools
 
 import (
+	"encoding/json"
 	"sort"
 )
+
+type Symptom struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
 
 // ListProgs Prints list of prognosises
 func ListProgs(recs [][]string) []string {
@@ -18,16 +24,20 @@ func ListProgs(recs [][]string) []string {
 }
 
 // ListAllSimps Returns a list of all Symptoms
-func ListAllSimps(recs [][]string) []string {
-	allSimps := make([]string, 0)
+func ListAllSimps(recs [][]string) []byte {
+	allSimps := make([]Symptom, 0)
+	var simp Symptom
 	for col := range recs[0] {
 		//records[row][column]
 		//fmt.Printf(recs[0][col] + ", ")
-		allSimps = append(allSimps, recs[0][col])
+		simp.ID = col
+		simp.Name = recs[0][col]
+		allSimps = append(allSimps, simp)
 	}
 	allSimps = allSimps[:len(allSimps)-1]
+	allSimpsJSON, _ := json.Marshal(allSimps)
 	//fmt.Println()
-	return allSimps
+	return allSimpsJSON
 }
 
 //ListSimps Returns prognosises for a select symptom

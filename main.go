@@ -186,8 +186,8 @@ func retSymptoms(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	simps := enhstools.ListAllSimps(records)
-	simpsJSON, _ := json.Marshal(simps)
-	w.Write([]byte(simpsJSON))
+	//simpsJSON, _ := json.Marshal(simps)
+	w.Write(simps)
 }
 
 //Func deleteForm - deletes form when requested.
