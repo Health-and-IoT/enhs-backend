@@ -25,6 +25,7 @@ func ListAllSimps(recs [][]string) []string {
 		//fmt.Printf(recs[0][col] + ", ")
 		allSimps = append(allSimps, recs[0][col])
 	}
+	allSimps = allSimps[:len(allSimps)-1]
 	//fmt.Println()
 	return allSimps
 }
