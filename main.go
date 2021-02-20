@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -9,6 +10,8 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+
+	"enhstools"
 
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
@@ -83,6 +86,8 @@ type Form1 struct {
 	Approved      bool   `json:"approved"`
 	DocID         string `json:"docID"`
 }
+
+var records [][]string
 
 //Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
 func update(v interface{}, updates map[string]string) {
@@ -174,6 +179,15 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 
 	}
 
+}
+
+//func retSymptoms JB Returns a JSON array of symptoms
+func retSymptoms(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	simps := enhstools.ListAllSimps(records)
+	//simpsJSON, _ := json.Marshal(simps)
+	w.Write(simps)
 }
 
 //Func deleteForm - deletes form when requested.
@@ -677,6 +691,21 @@ func main() {
 	}
 	defer client.Close()
 
+	//JAKE BLOCK ADDED 18/02/21
+	csvfile, err := os.Open("data/testing.csv")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	reader := csv.NewReader(csvfile)
+	records, err = reader.ReadAll()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer csvfile.Close()
+	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
+	//str := enhstools.ListAllSimps(records)
+	//fmt.Print(str)
+
 	//color.Green("Retrieving Firebase collection...⏳")
 	//log.Println("Retrieving Firebase collection...")
 	//iter := client.Collection("forms").Documents(ctx)
@@ -719,6 +748,7 @@ func main() {
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
+	r.HandleFunc("/symptoms", retSymptoms).Methods("GET")
 	r.HandleFunc("/test", test).Methods("GET")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
@@ -779,7 +809,6 @@ func main() {
 	})
 
 	//Starts and opens port allowing connections on runtime.
-	//NOTE JB - I think that this port should be 443
 	handler := cors.Default().Handler(r)
 
 	if err := http.ListenAndServe(":8080", handler); err != nil {
