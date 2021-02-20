@@ -1,7 +1,6 @@
 package enhstools
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -31,7 +30,7 @@ func ListAllSimps(recs [][]string) []string {
 }
 
 //ListSimps Returns prognosises for a select symptom
-func ListSimps(recs [][]string, symptom string) []string {
+func listSimps(recs [][]string, symptom string) []string {
 	x := len(recs[1]) - 1
 	progs := make([]string, 0)
 	//fmt.Printf(symptom)
@@ -62,7 +61,7 @@ func ListSimpsMult(recs [][]string, symptoms []string) map[string]int {
 	progSet := make([]string, 0)
 	finProgs := make(map[string]int)
 	for _, symptom := range symptoms {
-		tempProgs := ListSimps(recs, symptom)
+		tempProgs := listSimps(recs, symptom)
 		progSet = append(progSet, tempProgs...)
 	}
 	for _, index := range progSet {
@@ -76,9 +75,9 @@ func ListSimpsMult(recs [][]string, symptoms []string) map[string]int {
 	sort.Slice(keys, func(i, j int) bool {
 		return finProgs[keys[i]] > finProgs[keys[j]]
 	})
-	for _, key := range keys {
-		fmt.Printf("%-7v %v\n", key, finProgs[key])
-	}
+	//for _, key := range keys {
+	//	fmt.Printf("%-7v %v\n", key, finProgs[key])
+	//}
 	return finProgs
 }
 

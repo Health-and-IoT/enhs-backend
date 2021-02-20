@@ -691,7 +691,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	defer csvfile.Close()
-	str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash"})
+	str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
 	fmt.Print(str)
 
 	//color.Green("Retrieving Firebase collection...⏳")
