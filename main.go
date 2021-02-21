@@ -86,7 +86,7 @@ type Form1 struct {
 	Seen          bool     `json:"seen"`
 	Approved      bool     `json:"approved"`
 	DocID         string   `json:"docID"`
-	ProgList      []byte   `json:"progList"`
+	ProgList      string   `json:"progList"`
 	FinProg       string   `json:"finProg"`
 }
 
@@ -666,32 +666,11 @@ func checkForNewForm() {
 		}
 	}
 }
-func testAlg() {
-	ctx := context.Background()
-	sa := option.WithCredentialsFile("sk.json")
-	app, err := firebase.NewApp(ctx, nil, sa)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	client, err := app.Firestore(ctx)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer client.Close()
-	dsnap, err := client.Collection("form").Doc("S56ldUFgRLm6ZErvCFGC").Get(ctx)
-
-	var c Form1
-	dsnap.DataTo(&c)
-
-	str := enhstools.ListSimpsMult(records, c.Ailment)
-	//str := enhstools.ListAllSimps(records)
-	fmt.Print(string(str))
-}
 
 //func Main - this is where it all starts
 func main() {
-
+	//QRCode
+	//err := qrcode.WriteFile("hi", qrcode.Medium, 256, "qr.png")
 	//Inital setup
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
@@ -730,7 +709,7 @@ func main() {
 	}
 
 	defer csvfile.Close()
-	testAlg()
+
 	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
 	//fmt.Print(string(str))
 
@@ -776,6 +755,7 @@ func main() {
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
+
 	r.HandleFunc("/symptoms", retSymptoms).Methods("GET")
 	r.HandleFunc("/test", test).Methods("GET")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -823,6 +803,10 @@ func main() {
 			updates1 := map[string]string{"DocID": ref2.ID}
 
 			update(&form, updates1)
+
+			str := enhstools.ListSimpsMult(records, form.Ailment)
+			form.ProgList = string(str)
+
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
 			if err != nil {
