@@ -16,12 +16,14 @@ func main() {
 	mg := mailgun.NewMailgun(yourDomain, privateAPIKey)
 
 	sender := "#"
-	subject := "Fancy subject!"
-	body := "Hello from Mailgun Go!"
-	recipient := "40405884@mailinator.com"
+	subject := "test"
+	body := ""
+	recipient := "#"
 
 	// The message object allows you to add attachments and Bcc recipients
 	message := mg.NewMessage(sender, subject, body, recipient)
+	message.SetTemplate("newmessage-2021-02-21.181649")
+	message.AddTemplateVariable("Location_id", "test this")
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 	defer cancel()
