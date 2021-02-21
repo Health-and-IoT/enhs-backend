@@ -667,19 +667,26 @@ func checkForNewForm() {
 	}
 }
 func testAlg() {
-	csvfile, err := os.Open("data/testing.csv")
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("sk.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	reader := csv.NewReader(csvfile)
-	records, err = reader.ReadAll()
+
+	client, err := app.Firestore(ctx)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	defer csvfile.Close()
-	str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
+	defer client.Close()
+	dsnap, err := client.Collection("form").Doc("S56ldUFgRLm6ZErvCFGC").Get(ctx)
+
+	var c Form1
+	dsnap.DataTo(&c)
+
+	str := enhstools.ListSimpsMult(records, c.Ailment)
 	//str := enhstools.ListAllSimps(records)
-	fmt.Print(str)
+	fmt.Print(string(str))
 }
 
 //func Main - this is where it all starts
@@ -721,7 +728,9 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	defer csvfile.Close()
+	testAlg()
 	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
 	//fmt.Print(string(str))
 
