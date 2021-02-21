@@ -78,7 +78,6 @@ func ListSimpsMult(recs [][]string, symptoms []string) []byte {
 	for _, index := range progSet {
 		finProgsMap[index] = finProgsMap[index] + 1
 	}
-	//fmt.Println(finProgs)
 	keys := make([]string, 0, len(finProgsMap))
 	for k := range finProgsMap {
 		keys = append(keys, k)
