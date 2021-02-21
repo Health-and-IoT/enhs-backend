@@ -9,13 +9,13 @@ import (
 	"github.com/mailgun/mailgun-go"
 )
 
-var yourDomain string = "sandboxcedc9b051efc44eba1486189ca99064b.mailgun.org"
-var privateAPIKey string = "a2ce223b0e6cd87b3d75099d78cc96ae-d32d817f-a5693b86"
+var yourDomain string = "#"
+var privateAPIKey string = "#"
 
 func main() {
 	mg := mailgun.NewMailgun(yourDomain, privateAPIKey)
 
-	sender := "sandboxcedc9b051efc44eba1486189ca99064b.mailgun.org"
+	sender := "#"
 	subject := "Fancy subject!"
 	body := "Hello from Mailgun Go!"
 	recipient := "40405884@mailinator.com"
