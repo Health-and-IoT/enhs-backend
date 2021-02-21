@@ -78,14 +78,14 @@ type LoggedInUser struct {
 
 //Form1 struct - used to get form JSON strings when sent to server. Converts to GO strings.
 type Form1 struct {
-	Ailment       string `json:"ailment"`
-	DateSubmitted string `json:"dateSubmitted"`
-	Pain          int64  `json:"pain"`
-	Patient       string `json:"patient"`
-	Priority      string `json:"priority"`
-	Seen          bool   `json:"seen"`
-	Approved      bool   `json:"approved"`
-	DocID         string `json:"docID"`
+	Ailment       []string `json:"ailment"`
+	DateSubmitted string   `json:"dateSubmitted"`
+	Pain          int64    `json:"pain"`
+	Patient       string   `json:"patient"`
+	Priority      string   `json:"priority"`
+	Seen          bool     `json:"seen"`
+	Approved      bool     `json:"approved"`
+	DocID         string   `json:"docID"`
 }
 
 var records [][]string
@@ -663,6 +663,21 @@ func checkForNewForm() {
 			}
 		}
 	}
+}
+func testAlg() {
+	csvfile, err := os.Open("data/testing.csv")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	reader := csv.NewReader(csvfile)
+	records, err = reader.ReadAll()
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer csvfile.Close()
+	str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
+	//str := enhstools.ListAllSimps(records)
+	fmt.Print(str)
 }
 
 //func Main - this is where it all starts
