@@ -2,14 +2,17 @@ package enhstools
 
 import (
 	"encoding/json"
+	"log"
 	"sort"
 )
 
+// Symptom - Symptom struct with fields ID and Name
 type Symptom struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
 
+// Prognosis - Prognosis struct with fields ID, Name and SympCount. SympCount indicates the number of symptoms the patient has that are indicative of each prognosis.
 type Prognosis struct {
 	ID        int    `json:"id"`
 	Name      string `json:"name"`
@@ -24,6 +27,7 @@ func ListProgs(recs [][]string) []string {
 
 		allProgs = append(allProgs, recs[row][x])
 	}
+	log.Println("ListProgs Func called. Returned value: ", allProgs)
 	return allProgs
 }
 
@@ -38,6 +42,7 @@ func ListAllSimps(recs [][]string) []byte {
 	}
 	allSimps = allSimps[:len(allSimps)-1]
 	allSimpsJSON, _ := json.Marshal(allSimps)
+	log.Println("ListAllSimps Func called. Returned value: ", string(allSimpsJSON))
 	return allSimpsJSON
 }
 
@@ -62,6 +67,7 @@ func listSimps(recs [][]string, symptom string) []string {
 			progs = append(progs, recs[row][x])
 		}
 	}
+	log.Println("ListSimps Func called. Returned: ", progs)
 	return progs
 }
 
