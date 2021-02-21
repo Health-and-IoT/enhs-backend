@@ -86,6 +86,8 @@ type Form1 struct {
 	Seen          bool     `json:"seen"`
 	Approved      bool     `json:"approved"`
 	DocID         string   `json:"docID"`
+	ProgList      []byte   `json:"progList"`
+	FinProg       string   `json:"finProg"`
 }
 
 var records [][]string
@@ -721,8 +723,7 @@ func main() {
 	}
 	defer csvfile.Close()
 	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
-	//str := enhstools.ListAllSimps(records)
-	//fmt.Print(str)
+	//fmt.Print(string(str))
 
 	//color.Green("Retrieving Firebase collection...⏳")
 	//log.Println("Retrieving Firebase collection...")
