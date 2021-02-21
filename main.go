@@ -17,6 +17,7 @@ import (
 	firebase "firebase.google.com/go"
 	"github.com/fatih/color"
 	"github.com/gorilla/mux"
+
 	"github.com/rs/cors"
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
@@ -188,6 +189,7 @@ func retSymptoms(w http.ResponseWriter, r *http.Request) {
 	simps := enhstools.ListAllSimps(records)
 	//simpsJSON, _ := json.Marshal(simps)
 	w.Write(simps)
+
 }
 
 //Func deleteForm - deletes form when requested.
@@ -665,6 +667,7 @@ func checkForNewForm() {
 
 //func Main - this is where it all starts
 func main() {
+
 	//Inital setup
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
