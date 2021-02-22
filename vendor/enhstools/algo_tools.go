@@ -100,5 +100,6 @@ func ListSimpsMult(recs [][]string, symptoms []string) []byte {
 		index++
 	}
 	finProgsJSON, _ := json.Marshal(finProgsProg)
+	log.Println("ListSimpsMult Func called. Returned value: ", string(finProgsJSON))
 	return finProgsJSON
 }
