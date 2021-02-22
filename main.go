@@ -23,6 +23,8 @@ import (
 	"google.golang.org/api/option"
 )
 
+var yourDomain string
+var privateAPIKey string
 var records [][]string
 
 //Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
