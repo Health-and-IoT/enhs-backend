@@ -74,8 +74,8 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//fmt.Println(string(body))
-		//Convert to Form1
-		var p enhstools.Form1
+		//Convert to Form
+		var p enhstools.Form
 
 		json.Unmarshal([]byte(body), &p)
 		//Firebase update.
@@ -85,8 +85,8 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 				Value: p.Approved,
 			},
 			{
-				Path:  "Ailment",
-				Value: p.Ailment,
+				Path:  "Symptoms",
+				Value: p.Symptoms,
 			},
 			{
 				Path:  "Pain",
@@ -215,7 +215,7 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 	defer client.Close()
 	//Iterate through form from firebase where patient id matches.
 	iter := client.Collection("form").Where("Patient", "==", params["id"]).Documents(ctx)
-	var f []enhstools.Form1
+	var f []enhstools.Form
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -225,15 +225,15 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 
 			log.Fatalf("Failed to iterate: %v", err)
 		}
-		//Convert to Form1
-		var nyData enhstools.Form1
+		//Convert to Form
+		var nyData enhstools.Form
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
 		//Conversion
 		jsonString, _ := json.Marshal(doc.Data())
 
-		s := enhstools.Form1{}
+		s := enhstools.Form{}
 		//convert to Form struct
 		json.Unmarshal(jsonString, &s)
 		//fmt.Println(s.DateSubmitted)
@@ -424,7 +424,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 
 	//Iterate through forms.
 	iter := client.Collection("form").Where("SiteID", "==", params["id"]).Documents(ctx)
-	var f []enhstools.Form1
+	var f []enhstools.Form
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -435,13 +435,13 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 			log.Fatalf("Failed to iterate: %v", err)
 		}
 		//Convert to form
-		var nyData enhstools.Form1
+		var nyData enhstools.Form
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
 		jsonString, _ := json.Marshal(doc.Data())
 
-		s := enhstools.Form1{}
+		s := enhstools.Form{}
 		//convert to Form struct
 		json.Unmarshal(jsonString, &s)
 		//fmt.Println(s.DateSubmitted)
@@ -737,7 +737,7 @@ func main() {
 
 			update(&form, updates1)
 
-			str := enhstools.ListSimpsMult(records, form.Ailment)
+			str := enhstools.ListSimpsMult(records, form.Symptoms)
 			form.ProgList = string(str)
 
 			fmt.Println(form)
