@@ -17,75 +17,11 @@ import (
 	firebase "firebase.google.com/go"
 	"github.com/fatih/color"
 	"github.com/gorilla/mux"
+
 	"github.com/rs/cors"
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
-
-//Form Struct - for v1 - not used currently.
-type Form struct {
-	Address       string `json:"address"`
-	Name          string `json:"name"`
-	Dob           string `json:"dob"`
-	Nok           string `json:"nok"`
-	Chinumber     string `json:"chinumber"`
-	Allergies     string `json:"allergies"`
-	DateSubmitted string `json:"dateSubmitted"`
-	Id            string `json:"id"`
-	Illness       string `json:"illness"`
-	Pain          string `json:"pain"`
-	Priority      string `json:"priority"`
-	Seen          bool   `json:"seen"`
-}
-
-//Patient struct - used to get patient JSON strings when sent to server. Converts to GO strings.
-type Patient struct {
-	Address   string `json:"address"`
-	Allergies string `json:"allergies"`
-	Chinumber string `json:"chinumber"`
-	Dob       string `json:"dob"`
-	Donor     bool   `json:"donor"`
-	Name      string `json:"name"`
-	Nok       string `json:"nok"`
-}
-
-//Request struct - used to split patient and form when sent to server.
-type Request struct {
-	Patient Patient
-	Form    Form1
-}
-
-// Login struct - used when recieving a login request from app.
-type Login struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Siteid   string `json:"siteid"`
-}
-
-//Site struct - used to get site JSON strings when sent to server. Converts to GO Strings.
-type Site struct {
-	Name    string `json:"name"`
-	Address string `json:"address"`
-	Siteid  string `json:"siteid"`
-}
-
-//LoggedInUser struct - used to get non senstive JSON strings from firebase.
-type LoggedInUser struct {
-	Username string `json:"username"`
-	Rank     string `json:"rank"`
-}
-
-//Form1 struct - used to get form JSON strings when sent to server. Converts to GO strings.
-type Form1 struct {
-	Ailment       string `json:"ailment"`
-	DateSubmitted string `json:"dateSubmitted"`
-	Pain          int64  `json:"pain"`
-	Patient       string `json:"patient"`
-	Priority      string `json:"priority"`
-	Seen          bool   `json:"seen"`
-	Approved      bool   `json:"approved"`
-	DocID         string `json:"docID"`
-}
 
 var records [][]string
 
@@ -139,7 +75,7 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 
 		//fmt.Println(string(body))
 		//Convert to Form1
-		var p Form1
+		var p enhstools.Form1
 
 		json.Unmarshal([]byte(body), &p)
 		//Firebase update.
@@ -188,6 +124,7 @@ func retSymptoms(w http.ResponseWriter, r *http.Request) {
 	simps := enhstools.ListAllSimps(records)
 	//simpsJSON, _ := json.Marshal(simps)
 	w.Write(simps)
+
 }
 
 //Func deleteForm - deletes form when requested.
@@ -278,7 +215,7 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 	defer client.Close()
 	//Iterate through form from firebase where patient id matches.
 	iter := client.Collection("form").Where("Patient", "==", params["id"]).Documents(ctx)
-	var f []Form1
+	var f []enhstools.Form1
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -289,14 +226,14 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 			log.Fatalf("Failed to iterate: %v", err)
 		}
 		//Convert to Form1
-		var nyData Form1
+		var nyData enhstools.Form1
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
 		//Conversion
 		jsonString, _ := json.Marshal(doc.Data())
 
-		s := Form1{}
+		s := enhstools.Form1{}
 		//convert to Form struct
 		json.Unmarshal(jsonString, &s)
 		//fmt.Println(s.DateSubmitted)
@@ -346,7 +283,7 @@ func getPatient(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//convert to patient struct
-	var c Patient
+	var c enhstools.Patient
 	dsnap.DataTo(&c)
 
 	//Log and send response
@@ -384,7 +321,7 @@ func getSite(w http.ResponseWriter, r *http.Request) {
 	//Iterate through firebase collection of sites until id matches.
 	iter := client.Collection("sites").Where("siteid", "==", params["id"]).Documents(ctx)
 	//Convert to site struct
-	var nyData Site
+	var nyData enhstools.Site
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -450,7 +387,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Make into logged user
-	var c LoggedInUser
+	var c enhstools.LoggedInUser
 	dsnap.DataTo(&c)
 
 	//Record and respond
@@ -487,7 +424,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 
 	//Iterate through forms.
 	iter := client.Collection("form").Documents(ctx)
-	var f []Form1
+	var f []enhstools.Form1
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -498,13 +435,13 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 			log.Fatalf("Failed to iterate: %v", err)
 		}
 		//Convert to form
-		var nyData Form1
+		var nyData enhstools.Form1
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
 		jsonString, _ := json.Marshal(doc.Data())
 
-		s := Form1{}
+		s := enhstools.Form1{}
 		//convert to Form struct
 		json.Unmarshal(jsonString, &s)
 		//fmt.Println(s.DateSubmitted)
@@ -556,7 +493,7 @@ func authLogin(w http.ResponseWriter, r *http.Request) {
 		//fmt.Println(string(body))
 
 		//Setup login var
-		var p Login
+		var p enhstools.Login
 		//Convert to struct
 		json.Unmarshal([]byte(body), &p)
 		color.Yellow("Login Attempt Recieved from: " + p.Username)
@@ -665,6 +602,8 @@ func checkForNewForm() {
 
 //func Main - this is where it all starts
 func main() {
+	//QRCode
+	//err := qrcode.WriteFile("hi", qrcode.Medium, 256, "qr.png")
 	//Inital setup
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
@@ -701,10 +640,11 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
 	defer csvfile.Close()
+
 	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
-	//str := enhstools.ListAllSimps(records)
-	//fmt.Print(str)
+	//fmt.Print(string(str))
 
 	//color.Green("Retrieving Firebase collection...⏳")
 	//log.Println("Retrieving Firebase collection...")
@@ -748,6 +688,7 @@ func main() {
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
 	r.HandleFunc("/login/", authLogin).Methods("POST")
+
 	r.HandleFunc("/symptoms", retSymptoms).Methods("GET")
 	r.HandleFunc("/test", test).Methods("GET")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -771,7 +712,7 @@ func main() {
 
 			//fmt.Println(string(body))
 
-			var p Request
+			var p enhstools.Request
 
 			//NOTE & denotes value passed by reference ie value is changed by function.
 			json.Unmarshal([]byte(body), &p)
@@ -795,6 +736,10 @@ func main() {
 			updates1 := map[string]string{"DocID": ref2.ID}
 
 			update(&form, updates1)
+
+			str := enhstools.ListSimpsMult(records, form.Ailment)
+			form.ProgList = string(str)
+
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
 			if err != nil {
