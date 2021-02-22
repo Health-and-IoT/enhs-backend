@@ -51,6 +51,7 @@ type Site struct {
 type LoggedInUser struct {
 	Username string `json:"username"`
 	Rank     string `json:"rank"`
+	SiteID   string `json:"siteid"`
 }
 
 //Form1 struct - used to get form JSON strings when sent to server. Converts to GO strings.
@@ -65,4 +66,6 @@ type Form1 struct {
 	DocID         string   `json:"docID"`
 	ProgList      string   `json:"progList"`
 	FinProg       string   `json:"finProg"`
+	SiteID        string   `json:"siteID"`
+	Email         string   `json:"email"`
 }

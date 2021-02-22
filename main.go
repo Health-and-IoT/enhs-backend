@@ -406,7 +406,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
 	//Alert - id recieved
-	color.Yellow("ID Recieved ✔️")
+	color.Yellow("ID Recieved 1 ✔️")
 	color.Yellow(params["id"])
 	//Setup Firebase
 	ctx := context.Background()
@@ -423,7 +423,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	defer client.Close()
 
 	//Iterate through forms.
-	iter := client.Collection("form").Documents(ctx)
+	iter := client.Collection("form").Where("SiteID", "==", params["id"]).Documents(ctx)
 	var f []enhstools.Form1
 	for {
 		doc, err := iter.Next()
@@ -683,7 +683,7 @@ func main() {
 	r.HandleFunc("/getPatient/{id}", getPatient).Methods("POST")
 	r.HandleFunc("/getVisits/{id}", getVisits).Methods("POST")
 	r.HandleFunc("/getUser/{id}", getUser).Methods("POST")
-	r.HandleFunc("/getPatients", getPatients).Methods("POST")
+	r.HandleFunc("/getPatients/{id}", getPatients).Methods("POST")
 	r.HandleFunc("/updateForm/{id}", updateForm).Methods("POST")
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
@@ -722,7 +722,7 @@ func main() {
 
 			w.Header().Set("Content-Type", "application/json")
 			w.Header().Set("Access-Control-Allow-Origin", "*")
-			w.Write([]byte("{\"patient\": \"}"))
+			w.Write([]byte(`{"success":true}`))
 			_, err1 := ref.Set(ctx, pat)
 			if err != nil {
 				// Handle any errors in an appropriate way, such as returning them.
