@@ -1,9 +1,14 @@
 package enhstools
 
 import (
+	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"sort"
+	"time"
+
+	mailgun "github.com/mailgun/mailgun-go"
 )
 
 // Symptom - Symptom struct with fields ID and Name
@@ -102,4 +107,27 @@ func ListSimpsMult(recs [][]string, symptoms []string) []byte {
 	finProgsJSON, _ := json.Marshal(finProgsProg)
 	log.Println("ListSimpsMult Func called. Returned value: ", string(finProgsJSON))
 	return finProgsJSON
+}
+
+// Mail - Sends Email Receipt of form
+func Mail(domain string, mailAPIKey, recipient string, sender string, locID string, formID string) {
+	mg := mailgun.NewMailgun(domain, mailAPIKey)
+	subject := "Receipt: Form Received"
+	body := ""
+
+	// The message object allows you to add attachments and Bcc recipients
+	message := mg.NewMessage(sender, subject, body, recipient)
+	message.SetTemplate("newmessage-2021-02-21.181649")
+	message.AddTemplateVariable("location_id", locID)
+	message.AddTemplateVariable("form_id", formID)
+	message.AddTemplateVariable("sub_time", locID)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+	defer cancel()
+
+	// Send the message with a 10 second timeout
+	resp, id, err := mg.Send(ctx, message)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Email Sent. ID: %s Resp: %s\n", id, resp)
 }
