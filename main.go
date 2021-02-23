@@ -23,6 +23,8 @@ import (
 	"google.golang.org/api/option"
 )
 
+var yourDomain string
+var privateAPIKey string
 var records [][]string
 
 //Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
@@ -74,8 +76,8 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//fmt.Println(string(body))
-		//Convert to Form1
-		var p enhstools.Form1
+		//Convert to Form
+		var p enhstools.Form
 
 		json.Unmarshal([]byte(body), &p)
 		//Firebase update.
@@ -85,8 +87,8 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 				Value: p.Approved,
 			},
 			{
-				Path:  "Ailment",
-				Value: p.Ailment,
+				Path:  "Symptoms",
+				Value: p.Symptoms,
 			},
 			{
 				Path:  "Pain",
@@ -215,7 +217,7 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 	defer client.Close()
 	//Iterate through form from firebase where patient id matches.
 	iter := client.Collection("form").Where("Patient", "==", params["id"]).Documents(ctx)
-	var f []enhstools.Form1
+	var f []enhstools.Form
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -225,15 +227,15 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 
 			log.Fatalf("Failed to iterate: %v", err)
 		}
-		//Convert to Form1
-		var nyData enhstools.Form1
+		//Convert to Form
+		var nyData enhstools.Form
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
 		//Conversion
 		jsonString, _ := json.Marshal(doc.Data())
 
-		s := enhstools.Form1{}
+		s := enhstools.Form{}
 		//convert to Form struct
 		json.Unmarshal(jsonString, &s)
 		//fmt.Println(s.DateSubmitted)
@@ -406,7 +408,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
 	//Alert - id recieved
-	color.Yellow("ID Recieved ✔️")
+	color.Yellow("ID Recieved 1 ✔️")
 	color.Yellow(params["id"])
 	//Setup Firebase
 	ctx := context.Background()
@@ -423,8 +425,8 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	defer client.Close()
 
 	//Iterate through forms.
-	iter := client.Collection("form").Documents(ctx)
-	var f []enhstools.Form1
+	iter := client.Collection("form").Where("SiteID", "==", params["id"]).Documents(ctx)
+	var f []enhstools.Form
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
@@ -435,13 +437,13 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 			log.Fatalf("Failed to iterate: %v", err)
 		}
 		//Convert to form
-		var nyData enhstools.Form1
+		var nyData enhstools.Form
 		if err := doc.DataTo(&nyData); err != nil {
 			// TODO: Handle error.
 		}
 		jsonString, _ := json.Marshal(doc.Data())
 
-		s := enhstools.Form1{}
+		s := enhstools.Form{}
 		//convert to Form struct
 		json.Unmarshal(jsonString, &s)
 		//fmt.Println(s.DateSubmitted)
@@ -683,7 +685,7 @@ func main() {
 	r.HandleFunc("/getPatient/{id}", getPatient).Methods("POST")
 	r.HandleFunc("/getVisits/{id}", getVisits).Methods("POST")
 	r.HandleFunc("/getUser/{id}", getUser).Methods("POST")
-	r.HandleFunc("/getPatients", getPatients).Methods("POST")
+	r.HandleFunc("/getPatients/{id}", getPatients).Methods("POST")
 	r.HandleFunc("/updateForm/{id}", updateForm).Methods("POST")
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")
@@ -722,7 +724,7 @@ func main() {
 
 			w.Header().Set("Content-Type", "application/json")
 			w.Header().Set("Access-Control-Allow-Origin", "*")
-			w.Write([]byte("{\"patient\": \"}"))
+			w.Write([]byte(`{"success":true}`))
 			_, err1 := ref.Set(ctx, pat)
 			if err != nil {
 				// Handle any errors in an appropriate way, such as returning them.
@@ -737,7 +739,7 @@ func main() {
 
 			update(&form, updates1)
 
-			str := enhstools.ListSimpsMult(records, form.Ailment)
+			str := enhstools.ListSimpsMult(records, form.Symptoms)
 			form.ProgList = string(str)
 
 			fmt.Println(form)

@@ -1,21 +1,5 @@
 package enhstools
 
-//Form Struct - for v1 - not used currently.
-type Form struct {
-	Address       string `json:"address"`
-	Name          string `json:"name"`
-	Dob           string `json:"dob"`
-	Nok           string `json:"nok"`
-	Chinumber     string `json:"chinumber"`
-	Allergies     string `json:"allergies"`
-	DateSubmitted string `json:"dateSubmitted"`
-	ID            string `json:"id"`
-	Illness       string `json:"illness"`
-	Pain          string `json:"pain"`
-	Priority      string `json:"priority"`
-	Seen          bool   `json:"seen"`
-}
-
 //Patient struct - used to get patient JSON strings when sent to server. Converts to GO strings.
 type Patient struct {
 	Address   string `json:"address"`
@@ -30,7 +14,7 @@ type Patient struct {
 //Request struct - used to split patient and form when sent to server.
 type Request struct {
 	Patient Patient
-	Form    Form1
+	Form    Form
 }
 
 // Login struct - used when recieving a login request from app.
@@ -51,11 +35,12 @@ type Site struct {
 type LoggedInUser struct {
 	Username string `json:"username"`
 	Rank     string `json:"rank"`
+	SiteID   string `json:"siteid"`
 }
 
-//Form1 struct - used to get form JSON strings when sent to server. Converts to GO strings.
-type Form1 struct {
-	Ailment       []string `json:"ailment"`
+//Form struct - used to get form JSON strings when sent to server. Converts to GO strings.
+type Form struct {
+	Symptoms      []string `json:"symptoms"`
 	DateSubmitted string   `json:"dateSubmitted"`
 	Pain          int64    `json:"pain"`
 	Patient       string   `json:"patient"`
@@ -65,4 +50,6 @@ type Form1 struct {
 	DocID         string   `json:"docID"`
 	ProgList      string   `json:"progList"`
 	FinProg       string   `json:"finProg"`
+	SiteID        string   `json:"siteID"`
+	Email         string   `json:"email"`
 }
