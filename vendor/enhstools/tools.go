@@ -158,7 +158,7 @@ func ListSimpsMult(recs [][]string, symptoms []string) []byte {
 
 // Mail - Sends Email Receipt of form
 // Cut from GRAEME HILL's test_mail.go file.
-func Mail(domain string, mailAPIKey, recipient string, sender string, locID string, formID string) {
+func Mail(domain string, mailAPIKey string, recipient string, sender string, locID string, formID string) {
 	mg := mailgun.NewMailgun(domain, mailAPIKey)
 	subject := "Receipt: Form Received"
 	body := ""
