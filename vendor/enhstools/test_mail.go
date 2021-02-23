@@ -1,4 +1,4 @@
-package enhstools
+package test
 
 import (
 	"context"
