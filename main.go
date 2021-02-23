@@ -460,6 +460,67 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func getAllEvents(w http.ResponseWriter, r *http.Request) {
+	//Set response headers
+	w.Header().Set("Content-Type", "application/json")
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	//Get request vars
+	params := mux.Vars(r)
+
+	//Alert - id recieved
+	color.Yellow("ID Recieved 1 ✔️")
+	color.Yellow(params["id"])
+	//Setup Firebase
+	ctx := context.Background()
+	sa := option.WithCredentialsFile("sk.json")
+	app, err := firebase.NewApp(ctx, nil, sa)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	client, err := app.Firestore(ctx)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer client.Close()
+
+	//Iterate through forms.
+	iter := client.Collection("events").Documents(ctx)
+	var f []enhstools.Event
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+
+			log.Fatalf("Failed to iterate: %v", err)
+		}
+		//Convert to form
+		var nyData enhstools.Event
+		if err := doc.DataTo(&nyData); err != nil {
+			// TODO: Handle error.
+		}
+		jsonString, _ := json.Marshal(doc.Data())
+
+		s := enhstools.Event{}
+		//convert to Form struct
+		json.Unmarshal(jsonString, &s)
+		//fmt.Println(s.DateSubmitted)
+		//fmt.Println(string(jsonString))
+
+		// //fmt.Println(doc.Data())
+		// //fmt.Println(nyData)
+		//Append to form array
+		f = append(f, s)
+
+	}
+	//Respond
+	json.NewEncoder(w).Encode(f)
+
+}
+
 //Func authLogin - used to authorise user and log them into application.
 func authLogin(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
@@ -686,6 +747,7 @@ func main() {
 	r.HandleFunc("/getVisits/{id}", getVisits).Methods("POST")
 	r.HandleFunc("/getUser/{id}", getUser).Methods("POST")
 	r.HandleFunc("/getPatients/{id}", getPatients).Methods("POST")
+	r.HandleFunc("/getAllEvents", getAllEvents).Methods("POST")
 	r.HandleFunc("/updateForm/{id}", updateForm).Methods("POST")
 	r.HandleFunc("/deleteForm/{id}", deleteForm).Methods("POST")
 	r.HandleFunc("/getSite/{id}", getSite).Methods("POST")

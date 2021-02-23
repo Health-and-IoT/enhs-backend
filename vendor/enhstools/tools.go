@@ -168,7 +168,7 @@ func Mail(domain string, mailAPIKey, recipient string, sender string, locID stri
 	message.SetTemplate("newmessage-2021-02-21.181649")
 	message.AddTemplateVariable("location_id", locID)
 	message.AddTemplateVariable("form_id", formID)
-	message.AddTemplateVariable("sub_time", locID)
+	message.AddTemplateVariable("sub_time", time.Now())
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 	defer cancel()
 

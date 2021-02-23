@@ -11,6 +11,14 @@ type Patient struct {
 	Nok       string `json:"nok"`
 }
 
+type Event struct {
+	Name     string `json:"name"`
+	Location string `json:"location"`
+	Desc     string `json:"desc"`
+	Date     string `json:"date"`
+	Time     string `json:"time"`
+}
+
 //Request struct - used to split patient and form when sent to server.
 type Request struct {
 	Patient Patient
