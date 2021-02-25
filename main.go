@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"context"
 	"encoding/csv"
 	"encoding/json"
@@ -26,6 +27,7 @@ import (
 var yourDomain string
 var privateAPIKey string
 var records [][]string
+var queue list.List
 
 //Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
 func update(v interface{}, updates map[string]string) {
@@ -668,6 +670,8 @@ func main() {
 	//QRCode
 	//err := qrcode.WriteFile("hi", qrcode.Medium, 256, "qr.png")
 	//Inital setup
+	//Start new queue
+	queue := list.New()
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
 	f, err := os.OpenFile("logfile", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
@@ -814,7 +818,19 @@ func main() {
 				log.Printf("An error has occurred: %s", err2)
 			}
 			color.Yellow("Patient and Form added to DB ✔️")
-			log.Println("Patient and Form added to DB : ", ref.ID)
+			log.Println("Patient and Form added to DB : ", ref2.ID)
+			queue.PushBack(ref2.ID)
+
+			color.Green("Queue")
+			// Dequeue
+			//front := queue.Front()
+			//fmt.Println(front.Value)
+			// This will remove the allocated memory and avoid memory leaks
+			//queue.Remove(front)
+			for e := queue.Front(); e != nil; e = e.Next() {
+
+				fmt.Println("Queue:", e.Value.(string))
+			}
 		default:
 
 		}
