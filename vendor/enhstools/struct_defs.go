@@ -61,3 +61,9 @@ type Form struct {
 	SiteID        string   `json:"siteID"`
 	Email         string   `json:"email"`
 }
+
+type EmailData struct {
+	Domain string `json:"domain"`
+	APIKey string `json:"emailAPIkey"`
+	Sender string `json:"sender"`
+}

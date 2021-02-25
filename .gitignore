@@ -4,8 +4,8 @@
 
 # Specific Files
 sk.json
+email.json
 
 # Log Files
 logfile
 logfile.*
-

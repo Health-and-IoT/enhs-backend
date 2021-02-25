@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"context"
 	"encoding/csv"
 	"encoding/json"
@@ -23,9 +24,9 @@ import (
 	"google.golang.org/api/option"
 )
 
-var yourDomain string
-var privateAPIKey string
+var emailData enhstools.EmailData
 var records [][]string
+var queue list.List
 
 //Func update - used to update values before sending to firebase. Used mainly when creating new form and getting patients ID.
 func update(v interface{}, updates map[string]string) {
@@ -668,6 +669,8 @@ func main() {
 	//QRCode
 	//err := qrcode.WriteFile("hi", qrcode.Medium, 256, "qr.png")
 	//Inital setup
+	//Start new queue
+	queue := list.New()
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
 	f, err := os.OpenFile("logfile", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
@@ -703,9 +706,14 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
 	defer csvfile.Close()
-
+	log.Println("CSV Data Loaded.")
+	jsonFile, err := ioutil.ReadFile("email.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	_ = json.Unmarshal([]byte(jsonFile), &emailData)
+	log.Println("Email Config Loaded.")
 	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
 	//fmt.Print(string(str))
 
@@ -804,6 +812,9 @@ func main() {
 			str := enhstools.ListSimpsMult(records, form.Symptoms)
 			form.ProgList = string(str)
 
+			//Mail method with to be added variables (Domain, mailAPIKey and Sender)
+			enhstools.Mail(emailData.Domain, emailData.APIKey, form.Email, emailData.Sender, form.SiteID, form.DocID)
+			log.Println("Email Sent for: ", form.DocID)
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
 			if err != nil {
@@ -811,7 +822,19 @@ func main() {
 				log.Printf("An error has occurred: %s", err2)
 			}
 			color.Yellow("Patient and Form added to DB ✔️")
-			log.Println("Patient and Form added to DB : ", ref.ID)
+			log.Println("Patient and Form added to DB : ", ref2.ID)
+			queue.PushBack(ref2.ID)
+
+			color.Green("Queue")
+			// Dequeue
+			//front := queue.Front()
+			//fmt.Println(front.Value)
+			// This will remove the allocated memory and avoid memory leaks
+			//queue.Remove(front)
+			for e := queue.Front(); e != nil; e = e.Next() {
+
+				fmt.Println("Queue:", e.Value.(string))
+			}
 		default:
 
 		}
