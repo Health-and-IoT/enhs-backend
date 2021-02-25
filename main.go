@@ -804,6 +804,9 @@ func main() {
 			str := enhstools.ListSimpsMult(records, form.Symptoms)
 			form.ProgList = string(str)
 
+			//Mail method with to be added variables (Domain, mailAPIKey and Sender)
+			//enhstools.Mail(domain, mailAPIKey, form.Email, sender, form.SiteID, form.DocID)
+
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
 			if err != nil {
