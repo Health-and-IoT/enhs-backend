@@ -162,13 +162,14 @@ func Mail(domain string, mailAPIKey string, recipient string, sender string, loc
 	mg := mailgun.NewMailgun(domain, mailAPIKey)
 	subject := "Receipt: Form Received"
 	body := ""
+	date := time.Now()
 
 	// The message object allows you to add attachments and Bcc recipients
 	message := mg.NewMessage(sender, subject, body, recipient)
 	message.SetTemplate("newmessage-2021-02-21.181649")
 	message.AddTemplateVariable("location_id", locID)
 	message.AddTemplateVariable("form_id", formID)
-	message.AddTemplateVariable("sub_time", time.Now().String())
+	message.AddTemplateVariable("sub_time", date.Format("02/01/06 15:04:05"))
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 	defer cancel()
 
