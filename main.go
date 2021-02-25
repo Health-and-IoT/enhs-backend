@@ -24,8 +24,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-var yourDomain string
-var privateAPIKey string
+var emailData EmailData
 var records [][]string
 var queue list.List
 
@@ -707,9 +706,13 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
 	defer csvfile.Close()
-
+	jsonFile, err := ioutil.ReadFile("email.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+	var emailData EmailData
+	_ = json.Unmarshal([]byte(jsonFile), &emailData)
 	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
 	//fmt.Print(string(str))
 
@@ -809,7 +812,7 @@ func main() {
 			form.ProgList = string(str)
 
 			//Mail method with to be added variables (Domain, mailAPIKey and Sender)
-			//enhstools.Mail(domain, mailAPIKey, form.Email, sender, form.SiteID, form.DocID)
+			enhstools.Mail(emailData.Domain, emailData.APIKey, form.Email, emailData.Sender, form.SiteID, form.DocID)
 
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
