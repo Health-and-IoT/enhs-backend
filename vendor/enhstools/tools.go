@@ -16,7 +16,7 @@ import (
 type Symptom struct {
 	ID         int    `json:"id"`
 	Name       string `json:"name"`
-	PrettyName string `json:prettyName`
+	PrettyName string `json:"prettyName"`
 }
 
 // Prognosis - Prognosis struct with fields ID, Name and SympCount. SympCount indicates the number of symptoms the patient has that are indicative of each prognosis.
