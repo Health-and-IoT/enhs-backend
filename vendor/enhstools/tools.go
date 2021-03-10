@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"sort"
+	"strings"
 	"time"
 
 	mailgun "github.com/mailgun/mailgun-go"
@@ -13,8 +14,9 @@ import (
 
 // Symptom - Symptom struct with fields ID and Name
 type Symptom struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID         int    `json:"id"`
+	Name       string `json:"name"`
+	PrettyName string `json:"prettyName"`
 }
 
 // Prognosis - Prognosis struct with fields ID, Name and SympCount. SympCount indicates the number of symptoms the patient has that are indicative of each prognosis.
@@ -65,6 +67,7 @@ func ListAllSimps(recs [][]string) []byte {
 	for col := range recs[0] {
 		simp.ID = col
 		simp.Name = recs[0][col]
+		simp.PrettyName = getPretty(recs[0][col])
 		allSimps = append(allSimps, simp)
 	}
 	allSimps = allSimps[:len(allSimps)-1]
@@ -179,4 +182,16 @@ func Mail(domain string, mailAPIKey string, recipient string, sender string, loc
 		log.Fatal(err)
 	}
 	fmt.Printf("Email Sent. ID: %s Resp: %s\n", id, resp)
+}
+
+// GetPretty
+func getPretty(str string) string {
+	var prettyStr string
+	var strArr = strings.Split(str, "_")
+	for _, i := range strArr {
+		prettyStr = prettyStr + i + " "
+	}
+	prettyStr = strings.Title(prettyStr)
+	prettyStr = strings.TrimSuffix(prettyStr, " ")
+	return prettyStr
 }
