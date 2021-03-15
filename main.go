@@ -756,42 +756,7 @@ func main() {
 	}
 	_ = json.Unmarshal([]byte(jsonFile), &emailData)
 	log.Println("Email Config Loaded.")
-	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
-	//fmt.Print(string(str))
 
-	//color.Green("Retrieving Firebase collection...⏳")
-	//log.Println("Retrieving Firebase collection...")
-	//iter := client.Collection("forms").Documents(ctx)
-	//color.Green("Retrieved Firebase collection...✔️")
-	//log.Println("Retrieved Firebase collection...")
-	//Firebase iterator
-	// for {
-	// 	doc, err := iter.Next()
-	// 	if err == iterator.Done {
-	// 		break
-	// 	}
-	// 	if err != nil {
-
-	// 		log.Fatalf("Failed to iterate: %v", err)
-	// 	}
-	// 	var nyData Form
-	// 	if err := doc.DataTo(&nyData); err != nil {
-	// 		// TODO: Handle error.
-	// 	}
-	// 	// jsonString, _ := json.Marshal(doc.Data())
-
-	// 	// s := Form{}
-	// 	// //convert to Form struct
-	// 	// json.Unmarshal(jsonString, &s)
-	// 	// //fmt.Println(s.DateSubmitted)
-	// 	// //fmt.Println(string(jsonString))
-
-	// 	// //fmt.Println(doc.Data())
-	// 	// //fmt.Println(nyData)
-	// }
-	//color.Green("Forms initialised ✔️")
-
-	//Routers - the api aspect of the application.
 	r := mux.NewRouter()
 	r.HandleFunc("/getPatient/{id}", getPatient).Methods("POST")
 	r.HandleFunc("/getVisits/{id}", getVisits).Methods("POST")
@@ -855,7 +820,9 @@ func main() {
 			form.ProgList = string(str)
 
 			//Mail method with to be added variables (Domain, mailAPIKey and Sender)
-			enhstools.Mail(emailData.Domain, emailData.APIKey, form.Email, emailData.Sender, form.SiteID, form.DocID)
+			//form.Email to be used instead of hardcoded email.
+
+			enhstools.Mail(emailData.Domain, emailData.APIKey, "40315515@live.napier.ac.uk", emailData.Sender, form.SiteID, form.DocID)
 			log.Println("Email Sent for: ", form.DocID)
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
