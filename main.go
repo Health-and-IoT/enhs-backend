@@ -709,9 +709,9 @@ func main() {
 
 	// print all the values from the heap
 	// which should be in ascending order
-	for i := 0; i < len(nums); i++ {
-		fmt.Printf("%d,", heap.Pop(h).(int))
-	}
+	//for i := 0; i < len(nums); i++ {
+	//	fmt.Printf("%d,", heap.Pop(h).(int))
+	//}
 	queue := list.New()
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
