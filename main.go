@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/https"
 	"os"
 	"reflect"
 
@@ -864,7 +863,7 @@ func main() {
 	//Starts and opens port allowing connections on runtime.
 	handler := cors.Default().Handler(r)
 
-	if err := https.ListenAndServe(":8080", handler); err != nil {
+	if err := http.ListenAndServeTLS(":443", "apache-certificate.crt", "apache.key", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 
