@@ -863,7 +863,7 @@ func main() {
 	//Starts and opens port allowing connections on runtime.
 	handler := cors.Default().Handler(r)
 
-	if err := http.ListenAndServe(":8080", handler); err != nil {
+	if err := http.ListenAndServeTLS(":8080", "apache-certificate.crt", "apache.key", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 
