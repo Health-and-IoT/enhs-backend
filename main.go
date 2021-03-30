@@ -861,7 +861,7 @@ func main() {
 	})
 
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"*"},
+		AllowedOrigins: []string{"https://enhs-43c13.web.app/"},
 	})
 	//Starts and opens port allowing connections on runtime.
 	handler := c.Handler(r)
