@@ -539,8 +539,7 @@ func authLogin(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-	w.Header().Set("Access-Control-Allow-Headers", "Accept, Accept-Language, Content-Type")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
@@ -860,9 +859,13 @@ func main() {
 
 		}
 	})
-
+	c := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{"POST", "GET", "OPTIONS", "PUT", "DELETE"},
+		AllowedHeaders: []string{"Accept", "content-type", "Content-Length", "Accept-Encoding", "X-CSRF-Token", "Authorization"},
+	})
 	//Starts and opens port allowing connections on runtime.
-	handler := cors.Default().Handler(r)
+	handler := c.Handler(r)
 
 	if err := http.ListenAndServeTLS(":8080", "/etc/apache2/certificate/apache-certificate.crt", "/etc/apache2/certificate/apache.key", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
