@@ -860,8 +860,11 @@ func main() {
 		}
 	})
 
+	c := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+	})
 	//Starts and opens port allowing connections on runtime.
-	handler := cors.Default().Handler(r)
+	handler := c.Handler(r)
 
 	if err := http.ListenAndServeTLS(":8080", "/etc/apache2/certificate/apache-certificate.crt", "/etc/apache2/certificate/apache.key", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
