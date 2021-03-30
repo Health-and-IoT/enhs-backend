@@ -536,10 +536,11 @@ func getAllEvents(w http.ResponseWriter, r *http.Request) {
 //Func authLogin - used to authorise user and log them into application.
 func authLogin(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Headers", "Accept, Accept-Language, Content-Type")
 	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
