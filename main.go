@@ -105,6 +105,10 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 				Path:  "Seen",
 				Value: p.Seen,
 			},
+			{
+				Path:  "FinProg",
+				Value: p.FinProg,
+			},
 		})
 		if err != nil {
 			// Handle any errors in an appropriate way, such as returning them.
