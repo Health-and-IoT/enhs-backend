@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/heap"
 	"container/list"
 	"context"
 	"encoding/csv"
@@ -43,6 +44,7 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get vars from request.
 	params := mux.Vars(r)
 
@@ -103,6 +105,10 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 				Path:  "Seen",
 				Value: p.Seen,
 			},
+			{
+				Path:  "FinProg",
+				Value: p.FinProg,
+			},
 		})
 		if err != nil {
 			// Handle any errors in an appropriate way, such as returning them.
@@ -124,6 +130,7 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 func retSymptoms(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	simps := enhstools.ListAllSimps(records)
 	//simpsJSON, _ := json.Marshal(simps)
 	w.Write(simps)
@@ -136,6 +143,7 @@ func test(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get vars from request.
 
 	switch r.Method {
@@ -160,6 +168,7 @@ func deleteForm(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 	//Alert - delete request recieved.
@@ -197,6 +206,7 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 
@@ -259,6 +269,7 @@ func getPatient(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 
@@ -301,6 +312,7 @@ func getSite(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 
@@ -363,6 +375,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 
@@ -405,6 +418,7 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 
@@ -466,6 +480,7 @@ func getAllEvents(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
 
@@ -525,9 +540,10 @@ func getAllEvents(w http.ResponseWriter, r *http.Request) {
 //Func authLogin - used to authorise user and log them into application.
 func authLogin(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Setup firebase
 	ctx := context.Background()
 	sa := option.WithCredentialsFile("sk.json")
@@ -664,12 +680,53 @@ func checkForNewForm() {
 	}
 }
 
+type IntHeap []int
+
+func (h IntHeap) Len() int {
+	return len(h)
+}
+
+func (h IntHeap) Less(i, j int) bool {
+	return h[i] < h[j]
+}
+
+func (h IntHeap) Swap(i, j int) {
+	h[i], h[j] = h[j], h[i]
+}
+
+func (h *IntHeap) Push(x interface{}) {
+	*h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
 //func Main - this is where it all starts
 func main() {
 	//QRCode
 	//err := qrcode.WriteFile("hi", qrcode.Medium, 256, "qr.png")
 	//Inital setup
 	//Start new queue
+	nums := []int{3, 2, 20, 5, 3, 1, 2, 5, 6, 9, 10, 4}
+
+	// initialize the heap data structure
+	h := &IntHeap{}
+
+	// add all the values to heap, O(n log n)
+	for _, val := range nums { // O(n)
+		heap.Push(h, val) // O(log n)
+	}
+
+	// print all the values from the heap
+	// which should be in ascending order
+	//for i := 0; i < len(nums); i++ {
+	//	fmt.Printf("%d,", heap.Pop(h).(int))
+	//}
 	queue := list.New()
 	color.Green("Backend server started! ✔️")
 	//Check for logfile - if none, create one.
@@ -714,42 +771,7 @@ func main() {
 	}
 	_ = json.Unmarshal([]byte(jsonFile), &emailData)
 	log.Println("Email Config Loaded.")
-	//str := enhstools.ListSimpsMult(records, []string{"itching", "skin_rash", "watering_from_eyes"})
-	//fmt.Print(string(str))
 
-	//color.Green("Retrieving Firebase collection...⏳")
-	//log.Println("Retrieving Firebase collection...")
-	//iter := client.Collection("forms").Documents(ctx)
-	//color.Green("Retrieved Firebase collection...✔️")
-	//log.Println("Retrieved Firebase collection...")
-	//Firebase iterator
-	// for {
-	// 	doc, err := iter.Next()
-	// 	if err == iterator.Done {
-	// 		break
-	// 	}
-	// 	if err != nil {
-
-	// 		log.Fatalf("Failed to iterate: %v", err)
-	// 	}
-	// 	var nyData Form
-	// 	if err := doc.DataTo(&nyData); err != nil {
-	// 		// TODO: Handle error.
-	// 	}
-	// 	// jsonString, _ := json.Marshal(doc.Data())
-
-	// 	// s := Form{}
-	// 	// //convert to Form struct
-	// 	// json.Unmarshal(jsonString, &s)
-	// 	// //fmt.Println(s.DateSubmitted)
-	// 	// //fmt.Println(string(jsonString))
-
-	// 	// //fmt.Println(doc.Data())
-	// 	// //fmt.Println(nyData)
-	// }
-	//color.Green("Forms initialised ✔️")
-
-	//Routers - the api aspect of the application.
 	r := mux.NewRouter()
 	r.HandleFunc("/getPatient/{id}", getPatient).Methods("POST")
 	r.HandleFunc("/getVisits/{id}", getVisits).Methods("POST")
@@ -813,7 +835,9 @@ func main() {
 			form.ProgList = string(str)
 
 			//Mail method with to be added variables (Domain, mailAPIKey and Sender)
-			enhstools.Mail(emailData.Domain, emailData.APIKey, form.Email, emailData.Sender, form.SiteID, form.DocID)
+			//form.Email to be used instead of hardcoded email.
+
+			enhstools.Mail(emailData.Domain, emailData.APIKey, "40315515@live.napier.ac.uk", emailData.Sender, form.SiteID, form.DocID)
 			log.Println("Email Sent for: ", form.DocID)
 			fmt.Println(form)
 			_, err2 := ref2.Set(ctx, form)
@@ -839,11 +863,15 @@ func main() {
 
 		}
 	})
-
+	c := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{"POST", "GET", "OPTIONS", "PUT", "DELETE"},
+		AllowedHeaders: []string{"Accept", "content-type", "Content-Length", "Accept-Encoding", "X-CSRF-Token", "Authorization"},
+	})
 	//Starts and opens port allowing connections on runtime.
-	handler := cors.Default().Handler(r)
+	handler := c.Handler(r)
 
-	if err := http.ListenAndServe(":8080", handler); err != nil {
+	if err := http.ListenAndServeTLS(":8080", "/etc/apache2/certificate/apache-certificate.crt", "/etc/apache2/certificate/apache.key", handler); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 
