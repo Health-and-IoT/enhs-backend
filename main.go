@@ -106,7 +106,7 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 				Value: p.Seen,
 			},
 			{
-				Path:  "FinProg",
+				Path:  "finProg",
 				Value: p.FinProg,
 			},
 		})
