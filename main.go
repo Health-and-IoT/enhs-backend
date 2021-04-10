@@ -81,8 +81,9 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 		//fmt.Println(string(body))
 		//Convert to Form
 		var p enhstools.Form
-		color.Green(p.FinProg)
+
 		json.Unmarshal([]byte(body), &p)
+		color.Green(p.FinProg)
 		//Firebase update.
 		_, err = client.Collection("form").Doc(p.DocID).Update(ctx, []firestore.Update{
 			{
