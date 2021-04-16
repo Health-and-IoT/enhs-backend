@@ -864,7 +864,7 @@ func main() {
 		}
 	})
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"https://enhs-43c13.web.app"},
+		AllowedOrigins: []string{"capacitor://localhost", "http://localhost"},
 		AllowedMethods: []string{"POST", "GET", "OPTIONS", "PUT", "DELETE"},
 		AllowedHeaders: []string{"Accept", "content-type", "Content-Length", "Accept-Encoding", "X-CSRF-Token", "Authorization"},
 	})
