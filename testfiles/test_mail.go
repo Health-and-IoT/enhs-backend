@@ -12,7 +12,7 @@ import (
 var yourDomain string = "#"
 var privateAPIKey string = "#"
 
-func main() {
+func test() {
 	mg := mailgun.NewMailgun(yourDomain, privateAPIKey)
 
 	sender := "#"
