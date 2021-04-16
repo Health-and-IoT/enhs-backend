@@ -43,7 +43,6 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 	//Set headers for response
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get vars from request.
 	params := mux.Vars(r)
@@ -129,7 +128,7 @@ func updateForm(w http.ResponseWriter, r *http.Request) {
 //func retSymptoms JB Returns a JSON array of symptoms
 func retSymptoms(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	simps := enhstools.ListAllSimps(records)
 	//simpsJSON, _ := json.Marshal(simps)
@@ -142,7 +141,6 @@ func test(w http.ResponseWriter, r *http.Request) {
 	//Set headers for response
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get vars from request.
 
@@ -167,7 +165,6 @@ func deleteForm(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -205,7 +202,6 @@ func getVisits(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -268,7 +264,6 @@ func getPatient(w http.ResponseWriter, r *http.Request) {
 	//Set response header
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -311,7 +306,6 @@ func getSite(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -374,7 +368,6 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -417,7 +410,6 @@ func getPatients(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -479,7 +471,6 @@ func getAllEvents(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
 	w.Header().Set("Content-Type", "application/json")
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	//Get request vars
 	params := mux.Vars(r)
@@ -540,7 +531,7 @@ func getAllEvents(w http.ResponseWriter, r *http.Request) {
 //Func authLogin - used to authorise user and log them into application.
 func authLogin(w http.ResponseWriter, r *http.Request) {
 	//Set response headers
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+
 	w.Header().Set("Content-Type", "application/json")
 
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -815,7 +806,7 @@ func main() {
 			ref := client.Collection("patient").NewDoc()
 
 			w.Header().Set("Content-Type", "application/json")
-			w.Header().Set("Access-Control-Allow-Origin", "*")
+
 			w.Write([]byte(`{"success":true}`))
 			_, err1 := ref.Set(ctx, pat)
 			if err != nil {
