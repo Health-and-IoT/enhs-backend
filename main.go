@@ -864,7 +864,11 @@ func main() {
 		}
 	})
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"*"},
+		AllowedOrigins: []string{"capacitor://localhost",
+			"ionic://localhost",
+			"http://localhost",
+			"http://localhost:8080",
+			"http://localhost:8100"},
 		AllowedMethods: []string{"POST", "GET", "OPTIONS", "PUT", "DELETE"},
 		AllowedHeaders: []string{"Accept", "content-type", "Content-Length", "Accept-Encoding", "X-CSRF-Token", "Authorization"},
 	})
