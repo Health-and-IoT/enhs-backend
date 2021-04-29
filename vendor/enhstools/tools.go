@@ -72,7 +72,7 @@ func ListAllSimps(recs [][]string) []byte {
 	}
 	allSimps = allSimps[:len(allSimps)-1]
 	allSimpsJSON, _ := json.Marshal(allSimps)
-	log.Println("ListAllSimps Func called. Returned value: ", string(allSimpsJSON))
+	log.Println("ListAllSimps Func called.")
 	return allSimpsJSON
 }
 
